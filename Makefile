@@ -10,47 +10,109 @@
 #                                                                              #
 # **************************************************************************** #
 
-INCLUDES_C = -I includes/checker.h
-INCLUDES_P = -I includes/push_swap.h
+INCLUDES = -I ./includes
+
 SRCS_C = ./srcs/checker/*
 SRCS_P = ./srcs/push_swap/*
-UTILS = ./utils/*
-NAME = libft_ls.a
+SRCS_OPER = ./srcs/operations/*
+
+LIBFT = libft/libft.a
+LIB_C = lib_checker.a
+LIB_P = lib_push_swap.a
+LIB_OPER = lib_operations.a
+
+OBJ = ./obj
+
 EXEC_C = checker
 EXEC_P = push_swap
-LIBFT = libft/libft.a
 
 RESET = \033[0m
 RED = \033[0;31m
 GREEN = \033[0;32m
 BLUE = \033[0;36m
+RED_EXTRA = \033[1;31m
+GREEN_EXTRA = \033[1;32m
+BLUE_EXTRA = \033[1;36m
 
-$(NAME):
-	@echo "$(GREEN)Making objects files for $(NAME)$(RESET)"
-	@gcc -Wall -Wextra -Werror $(SRCS) $(UTILS) $(INCLUDES) -c
-	@echo "$(GREEN)Compiling $(NAME)$(RESET)"
+all: $(LIB_OPER) $(EXEC_C) $(EXEC_P)
+
+$(LIB_OPER):
+	@echo "$(GREEN)Making objects files for $(GREEN_EXTRA)$(LIB_OPER)$(RESET)"
+	@gcc -Wall -Wextra -Werror $(SRCS_OPER) $(INCLUDES) -c
+	@echo "$(GREEN)Compiling $(GREEN_EXTRA)$(LIB_OPER)$(RESET)"
+	@ar rc $(LIB_OPER) *.o
+	@ranlib $(LIB_OPER)
+	@if [ ! -d "./obj" ]; then mkdir -p $(OBJ); fi
+	@echo "$(GREEN)Moving objects files for $(GREEN_EXTRA)$(LIB_OPER)$(GREEN) to $(OBJ)$(RESET)"
+	@mv *.o $(OBJ)
 	@make -C libft
-	@ar rc $(NAME) *.o
-	@ranlib $(NAME)
-	@echo "$(GREEN)Compiling executable $(EXEC)$(RESET)"
-	@gcc -Wall -Wextra -Werror $(NAME) $(LIBFT) $(INCLUDES) main.c -o $(EXEC)
-	@echo "$(BLUE)$(NAME): Complete$(RESET)"
+	@echo "$(BLUE_EXTRA)$(LIB_OPER)$(BLUE): Complete$(RESET)"
 
-all: $(NAME)
+$(EXEC_C):
+	@echo "$(GREEN)Making objects files for $(GREEN_EXTRA)$(LIB_C)$(RESET)"
+	@gcc -Wall -Wextra -Werror $(SRCS_C) $(INCLUDES) -c
+	@echo "$(GREEN)Compiling $(GREEN_EXTRA)$(LIB_C)$(RESET)"
+	@ar rc $(LIB_C) *.o
+	@ranlib $(LIB_C)
+	@if [ ! -d "./obj" ]; then mkdir -p $(OBJ); fi
+	@echo "$(GREEN)Moving objects files for $(GREEN_EXTRA)$(LIB_C)$(GREEN) to $(OBJ)$(RESET)"
+	@mv *.o $(OBJ)
+	@echo "$(GREEN)Compiling executable $(EXEC_C)$(RESET)"
+	@gcc -Wall -Wextra -Werror $(LIB_C) $(LIB_OPER) $(INCLUDES) -o $(EXEC_C)
+	@echo "$(BLUE_EXTRA)$(EXEC_C)$(BLUE): Complete$(RESET)"
+
+
+$(EXEC_P):
+	@echo "$(GREEN)Making objects files for $(GREEN_EXTRA)$(LIB_P)$(RESET)"
+	@gcc -Wall -Wextra -Werror $(SRCS_P) $(INCLUDES) -c
+	@echo "$(GREEN)Compiling $(GREEN_EXTRA)$(LIB_P)$(RESET)"
+	@ar rc $(LIB_P) *.o
+	@ranlib $(LIB_P)
+	@if [ ! -d "./obj" ]; then mkdir -p $(OBJ); fi
+	@echo "$(GREEN)Moving objects files for $(GREEN_EXTRA)$(LIB_P)$(GREEN) to $(OBJ)$(RESET)"
+	@mv *.o $(OBJ)
+	@echo "$(GREEN)Compiling executable $(EXEC_P)$(RESET)"
+	@gcc -Wall -Wextra -Werror $(LIB_P) $(LIB_OPER) $(INCLUDES) -o $(EXEC_P)
+	@echo "$(BLUE_EXTRA)$(EXEC_P)$(BLUE): Complete$(RESET)"
 
 clean:
-	@echo "$(RED)Deleting objects for $(NAME)$(RESET)"
-	@/bin/rm -f *.o
+	@if [ -d "./obj" ]; then \
+	echo "$(RED)Deleting objects for $(RED_EXTRA)$(LIB_OPER)$(RESET)"; \
+	echo "$(RED)Deleting objects for $(RED_EXTRA)$(LIB_C)$(RESET)"; \
+	echo "$(RED)Deleting objects for $(RED_EXTRA)$(LIB_P)$(RESET)"; \
+	/bin/rm -rf $(OBJ); \
+	fi
 	@make -C libft clean
-	@echo "$(BLUE)clean: Complete$(RESET)"
+	@echo "$(BLUE_EXTRA)clean$(BLUE): Complete$(RESET)"
 
 fclean: clean
-	@echo "$(RED)Deleting $(NAME)$(RESET)"
-	@/bin/rm -f $(NAME)
-	@echo "$(RED)Deleting executable $(EXEC)$(RESET)"
-	@/bin/rm -f $(EXEC)
+	@if [ -a "$(LIB_OPER)" ]; then \
+	echo "$(RED)Deleting $(RED_EXTRA)$(LIB_OPER)$(RESET)"; \
+	/bin/rm -f $(LIB_OPER); \
+	fi
+
+	@if [ -a "$(LIB_C)" ]; then \
+	echo "$(RED)Deleting $(RED_EXTRA)$(LIB_C)$(RESET)"; \
+	/bin/rm -f $(LIB_C); \
+	fi
+
+	@if [ -a "$(LIB_P)" ]; then \
+	echo "$(RED)Deleting $(RED_EXTRA)$(LIB_P)$(RESET)"; \
+	/bin/rm -f $(LIB_P); \
+	fi
+
+	@if [ -a "$(EXEC_C)" ]; then \
+	echo "$(RED)Deleting executable $(RED_EXTRA)$(EXEC_C)$(RESET)"; \
+	/bin/rm -f $(EXEC_C); \
+	fi
+
+	@if [ -a "$(EXEC_P)" ]; then \
+	echo "$(RED)Deleting executable $(RED_EXTRA)$(EXEC_P)$(RESET)"; \
+	/bin/rm -f $(EXEC_P); \
+	fi
+
 	@make -C libft fclean
-	@echo "$(BLUE)fclean: Complete$(RESET)"
+	@echo "$(BLUE_EXTRA)fclean$(BLUE): Complete$(RESET)"
 
 re: fclean all
 

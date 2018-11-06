@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   operations.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: knaumov <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/05 15:28:26 by knaumov           #+#    #+#             */
-/*   Updated: 2018/11/05 15:39:23 by knaumov          ###   ########.fr       */
+/*   Created: 2018/11/05 15:38:22 by knaumov           #+#    #+#             */
+/*   Updated: 2018/11/05 16:06:35 by knaumov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#ifndef OPERATIONS_H
+# define OPERATIONS_H
 
 # include "../libft/libft.h"
 

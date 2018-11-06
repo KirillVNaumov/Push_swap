@@ -6,7 +6,7 @@
 #    By: knaumov <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/10 09:50:35 by knaumov           #+#    #+#              #
-#    Updated: 2018/11/02 10:29:29 by knaumov          ###   ########.fr        #
+#    Updated: 2018/11/05 19:47:46 by knaumov          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -239,24 +239,28 @@ RESET = \033[0m
 RED = \033[0;31m
 GREEN = \033[0;32m
 BLUE = \033[0;36m
+RED_EXTRA = \033[1;31m
+GREEN_EXTRA = \033[1;32m
+BLUE_EXTRA = \033[1;36m
 
 all: $(NAME)
 
 $(NAME):
-	@echo "$(GREEN)   Libft: Making objects for libft.a$(RESET)"
+	@echo "$(GREEN_EXTRA)   Libft: $(GREEN)Making objects for $(GREEN_EXTRA)libft.a$(RESET)"
 	@gcc -Wall -Wextra -Werror -c $(FILES)
-	@echo "$(GREEN)   Libft: Compiling libft.a$(RESET)"
+	@echo "$(GREEN_EXTRA)   Libft: $(GREEN)Compiling $(GREEN_EXTRA)libft.a$(RESET)"
 	@ar rc $(NAME) $(OBJ)
 	@ranlib $(NAME)
-	@echo "$(BLUE)   Libft: $(NAME): Complete$(RESET)"
+	@echo "$(BLUE_EXTRA)   Libft: $(NAME)$(BLUE): Complete$(RESET)"
 
 clean:
-	@echo "$(RED)   Libft: Deleting objects for libft.a$(RESET)"
-	@/bin/rm -f $(OBJ)
-
+	@if [ -a "./ft_atoi.o" ]; then echo "$(RED_EXTRA)   Libft: $(RED)Deleting objects for $(RED_EXTRA)libft.a$(RESET)"; fi
+	@if [ -a "./ft_atoi.o" ]; then /bin/rm -f $(OBJ); fi
+	@echo "$(BLUE_EXTRA)   Libft: clean$(BLUE): Complete$(RESET)"
 
 fclean: clean
-	@echo "$(RED)   Libft: Deleting libft.a$(RESET)"
-	@/bin/rm -f $(NAME)
+	@if [ -a "$(NAME)" ]; then echo "$(RED_EXTRA)   Libft: $(RED)Deleting $(RED_EXTRA)libft.a$(RESET)"; fi
+	@if [ -a "$(NAME)" ]; then /bin/rm -f $(NAME); fi
+	@echo "$(BLUE_EXTRA)   Libft: fclean$(BLUE): Complete$(RESET)"
 
 re:	fclean all
