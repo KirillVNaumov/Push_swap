@@ -1,19 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   ft_list_add_front.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: knaumov <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/24 13:13:06 by knaumov           #+#    #+#             */
-/*   Updated: 2018/10/05 17:37:30 by knaumov          ###   ########.fr       */
+/*   Created: 2018/11/05 22:03:32 by knaumov           #+#    #+#             */
+/*   Updated: 2018/11/05 22:04:09 by knaumov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstdelone(t_list **alst, void (*del)(void *, size_t))
+t_list	*ft_list_add_front(t_list *list, void *data)
 {
-	del((*alst)->content, (*alst)->content_size);
-	ft_memdel((void**)alst);
+	t_list		*node;
+
+	if (list == NULL)
+	{
+		list = (t_list *)malloc(sizeof(t_list));
+		list->data = data;
+		list->next = NULL;
+		return (list);
+	}
+	node = (t_list *)malloc(sizeof(t_list));
+	node->next = list;
+	node->data = data;
+	return (node);
 }

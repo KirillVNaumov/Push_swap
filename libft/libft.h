@@ -6,7 +6,7 @@
 /*   By: knaumov <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 13:05:51 by knaumov           #+#    #+#             */
-/*   Updated: 2018/11/01 13:10:33 by knaumov          ###   ########.fr       */
+/*   Updated: 2018/11/05 22:21:17 by knaumov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,16 +90,14 @@ void				ft_putendl_fd(char const *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
 typedef struct		s_list
 {
-	void			*content;
-	size_t			content_size;
+	void			*data;
 	struct s_list	*next;
 }					t_list;
-t_list				*ft_lstnew(void const *content, size_t content_size);
-void				ft_lstdelone(t_list **alst, void (*del)(void*, size_t));
-void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
-void				ft_lstadd(t_list **alst, t_list *new);
-void				ft_lstiter(t_list *lst, void (*f)(t_list*elem));
-t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
+void				ft_list_clean(t_list **list);
+t_list				*ft_list_add_back(t_list *list, void *data);
+t_list				*ft_list_add_front(t_list *list, void *data);
+t_list				*ft_list_remove_back(t_list *list);
+t_list				*ft_list_remove_front(t_list *list);
 typedef struct		s_btree
 {
 	void			*item;
@@ -118,7 +116,7 @@ void				*ft_btree_search_item(t_btree *root, void *data_ref,\
 int					ft_btree_level_count(t_btree *root);
 void				ft_btree_insert_data(t_btree **root, void *item, \
 		int (*cmpf)(void *, void *));
-int					ft_lstsize(t_list *root);
+int					ft_list_size(t_list *root);
 char				*ft_itoa_base(intmax_t value, int base);
 int					get_next_line(const int fd, char **line);
 char				*ft_strcon(char **arr, char *c);

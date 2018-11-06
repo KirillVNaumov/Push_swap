@@ -6,7 +6,7 @@
 #    By: knaumov <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/10 09:50:35 by knaumov           #+#    #+#              #
-#    Updated: 2018/11/05 19:47:46 by knaumov          ###   ########.fr        #
+#    Updated: 2018/11/05 22:21:41 by knaumov          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,13 +64,12 @@ FILES = ./ft_atoi.c \
 		./ft_strtrim.c \
 		./ft_tolower.c \
 		./ft_toupper.c \
-		./ft_lstadd.c \
-		./ft_lstdel.c \
-		./ft_lstdelone.c \
-		./ft_lstiter.c \
-		./ft_lstmap.c \
-		./ft_lstnew.c \
-		./ft_lstsize.c \
+		./ft_list_add_back.c \
+		./ft_list_add_front.c \
+		./ft_list_remove_front.c \
+		./ft_list_remove_back.c \
+		./ft_list_clean.c \
+		./ft_list_size.c \
 		./ft_btree_apply_infix.c \
 		./ft_btree_apply_prefix.c \
 		./ft_btree_apply_suffix.c \
@@ -176,13 +175,12 @@ OBJ =   ./ft_atoi.o \
 		./ft_strtrim.o \
 		./ft_tolower.o \
 		./ft_toupper.o \
-		./ft_lstadd.o \
-		./ft_lstdel.o \
-		./ft_lstdelone.o \
-		./ft_lstiter.o \
-		./ft_lstmap.o \
-		./ft_lstnew.o \
-		./ft_lstsize.o \
+		./ft_list_add_back.o \
+		./ft_list_add_front.o \
+		./ft_list_remove_front.o \
+		./ft_list_remove_back.o \
+		./ft_list_clean.o \
+		./ft_list_size.o \
 		./ft_btree_apply_infix.o \
 		./ft_btree_apply_prefix.o \
 		./ft_btree_apply_suffix.o \
