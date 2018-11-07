@@ -16,8 +16,9 @@
 # include "utils.h"
 # include "operations.h"
 
-void		read_output(t_list *stack_a);
-void		check_result(t_list *stack_a, t_list *stack_b);
-
+int			read_output(t_list **stack_a, int flag_v);
+void		check_result(t_list **stack_a, t_list *stack_b);
+void		print_status(t_list *stack_a, t_list *stack_b);
+// void		check_duplicates(t_list *stack_a);
 
 # endif
