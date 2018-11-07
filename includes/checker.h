@@ -15,4 +15,9 @@
 
 # include "utils.h"
 # include "operations.h"
+
+void		read_output(t_list *stack_a);
+void		check_result(t_list *stack_a, t_list *stack_b);
+
+
 # endif

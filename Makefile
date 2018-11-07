@@ -60,7 +60,7 @@ $(EXEC_C):
 	@echo "$(GREEN)Moving objects files for $(GREEN_EXTRA)$(LIB_C)$(GREEN) to $(OBJ)$(RESET)"
 	@mv *.o $(OBJ)
 	@echo "$(GREEN)Compiling executable $(EXEC_C)$(RESET)"
-	@gcc -Wall -Wextra -Werror $(LIB_C) $(LIB_OPER) $(LIBFT) $(INCLUDES) -o $(EXEC_C)
+	@gcc -Wall -Wextra -Werror $(LIB_C) $(LIB_OPER) $(LIBFT) $(INCLUDES) -o $(EXEC_C) -g
 	@echo "$(BLUE_EXTRA)$(EXEC_C)$(BLUE): Complete$(RESET)"
 
 
@@ -74,7 +74,7 @@ $(EXEC_P):
 	@echo "$(GREEN)Moving objects files for $(GREEN_EXTRA)$(LIB_P)$(GREEN) to $(OBJ)$(RESET)"
 	@mv *.o $(OBJ)
 	@echo "$(GREEN)Compiling executable $(EXEC_P)$(RESET)"
-	@gcc -Wall -Wextra -Werror $(LIB_P) $(LIB_OPER) $(LIBFT) $(INCLUDES) -o $(EXEC_P)
+	@gcc -Wall -Wextra -Werror $(LIB_P) $(LIB_OPER) $(LIBFT) $(INCLUDES) -o $(EXEC_P) -g
 	@echo "$(BLUE_EXTRA)$(EXEC_P)$(BLUE): Complete$(RESET)"
 
 clean:

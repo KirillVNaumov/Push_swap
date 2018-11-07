@@ -2,18 +2,33 @@
 
 int main()
 {
-	t_list *list;
+	t_list *a;
+	t_list *b;
 
-	list = NULL;
-	list = ft_list_add_back(list, 1);
-	list = ft_list_add_back(list, 2);
-	list = ft_list_add_back(list, 3);
-	list = ft_list_add_back(list, 4);
-	list = ft_list_add_back(list, 5);
-	ft_list_remove_front(&list);
-	while (list)
+	a = NULL;
+	a = ft_list_add_back(a, 1);
+	a = ft_list_add_back(a, 2);
+	a = ft_list_add_back(a, 3);
+	a = ft_list_add_back(a, 4);
+	a = ft_list_add_back(a, 5);
+
+	b = NULL;
+	b = ft_list_add_back(b, 6);
+	b = ft_list_add_back(b, 7);
+	b = ft_list_add_back(b, 8);
+
+
+
+	ft_printf("a:\n");
+	while (a)
 	{
-		ft_printf("%d\n", list->data);
-		list = list->next;
+		ft_printf("%d\n", a->data);
+		a = a->next;
+	}
+	ft_printf("\nb:\n");
+	while (b)
+	{
+		ft_printf("%d\n", b->data);
+		b = b->next;
 	}
 }
