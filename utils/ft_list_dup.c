@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "operation.h"
+#include "utils.h"
 
 t_list		*ft_list_dup(t_list *list)
 {
@@ -21,7 +21,7 @@ t_list		*ft_list_dup(t_list *list)
 	tmp = list;
 	while (tmp)
 	{
-		new = ft_list_add_back(new, tmp->data);
+//		new = ft_list_add_back(new, tmp->data);
 		tmp = tmp->next;
 	}
 	return (tmp);

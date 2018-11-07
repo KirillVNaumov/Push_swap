@@ -10,14 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "operation.h"
+#include "utils.h"
 
 int		ft_list_size(t_list *root)
 {
 	int		i;
 	t_list	*entity;
 
-	i = 0;
+	i = 1;
+	if (!root)
+		return (0);
 	if (root)
 	{
 		entity = root;

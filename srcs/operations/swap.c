@@ -9,7 +9,7 @@ void		swap(t_list *list)
 	if (ft_list_size(list) < 2)
 		return ;
 	elem1 = list;
-	elem2 = elem1->next;
+	elem2 = list->next;
 	tmp = elem1->data;
 	elem1->data = elem2->data;
 	elem2->data = tmp;

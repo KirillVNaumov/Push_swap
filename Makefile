@@ -40,14 +40,14 @@ all: $(LIB_OPER) $(EXEC_C) $(EXEC_P)
 
 $(LIB_OPER):
 	@echo "$(GREEN)Making objects files for $(GREEN_EXTRA)$(LIB_OPER)$(RESET)"
-	@gcc -Wall -Wextra -Werror $(SRCS_OPER) $(INCLUDES) -c
+	@gcc -Wall -Wextra -Werror $(SRCS_OPER) $(UTILS) $(INCLUDES) -c -g
 	@echo "$(GREEN)Compiling $(GREEN_EXTRA)$(LIB_OPER)$(RESET)"
 	@ar rc $(LIB_OPER) *.o
 	@ranlib $(LIB_OPER)
 	@if [ ! -d "./obj" ]; then mkdir -p $(OBJ); fi
 	@echo "$(GREEN)Moving objects files for $(GREEN_EXTRA)$(LIB_OPER)$(GREEN) to $(OBJ)$(RESET)"
 	@mv *.o $(OBJ)
-	@make -C libft
+	#@make -C libft
 	@echo "$(BLUE_EXTRA)$(LIB_OPER)$(BLUE): Complete$(RESET)"
 
 $(EXEC_C):
@@ -60,7 +60,7 @@ $(EXEC_C):
 	@echo "$(GREEN)Moving objects files for $(GREEN_EXTRA)$(LIB_C)$(GREEN) to $(OBJ)$(RESET)"
 	@mv *.o $(OBJ)
 	@echo "$(GREEN)Compiling executable $(EXEC_C)$(RESET)"
-	@gcc -Wall -Wextra -Werror $(LIB_C) $(LIB_OPER) $(INCLUDES) -o $(EXEC_C)
+	@gcc -Wall -Wextra -Werror $(LIB_C) $(LIB_OPER) $(LIBFT) $(INCLUDES) -o $(EXEC_C)
 	@echo "$(BLUE_EXTRA)$(EXEC_C)$(BLUE): Complete$(RESET)"
 
 
@@ -74,7 +74,7 @@ $(EXEC_P):
 	@echo "$(GREEN)Moving objects files for $(GREEN_EXTRA)$(LIB_P)$(GREEN) to $(OBJ)$(RESET)"
 	@mv *.o $(OBJ)
 	@echo "$(GREEN)Compiling executable $(EXEC_P)$(RESET)"
-	@gcc -Wall -Wextra -Werror $(LIB_P) $(LIB_OPER) $(INCLUDES) -o $(EXEC_P)
+	@gcc -Wall -Wextra -Werror $(LIB_P) $(LIB_OPER) $(LIBFT) $(INCLUDES) -o $(EXEC_P)
 	@echo "$(BLUE_EXTRA)$(EXEC_P)$(BLUE): Complete$(RESET)"
 
 clean:
@@ -84,7 +84,7 @@ clean:
 	echo "$(RED)Deleting objects for $(RED_EXTRA)$(LIB_P)$(RESET)"; \
 	/bin/rm -rf $(OBJ); \
 	fi
-	@make -C libft clean
+	#@make -C libft clean
 	@echo "$(BLUE_EXTRA)clean$(BLUE): Complete$(RESET)"
 
 fclean: clean
@@ -113,7 +113,7 @@ fclean: clean
 	/bin/rm -f $(EXEC_P); \
 	fi
 
-	@make -C libft fclean
+	#@make -C libft fclean
 	@echo "$(BLUE_EXTRA)fclean$(BLUE): Complete$(RESET)"
 
 re: fclean all

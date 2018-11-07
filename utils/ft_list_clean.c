@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "operation.h"
+#include "utils.h"
 
 void	ft_list_clean(t_list **list)
 {

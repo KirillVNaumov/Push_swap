@@ -10,22 +10,25 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "operation.h"
+#include "utils.h"
 
-t_list	*ft_list_remove_back(t_list *list)
+void 	ft_list_remove_back(t_list **list)
 {
 	t_list		*tmp;
+	t_list		*node;
 
-	if (ft_list_size(list) == 0)
-		return (NULL);
-	if (ft_list_size(list) == 1)
+	if (*list == NULL)
+		return ;
+	if (ft_list_size(*list) == 1)
 	{
-		ft_list_clean(&list);
-		return (NULL);
+		free(*list);
+		*list = NULL;
+		return ;
 	}
-	tmp = list;
-	while (tmp->next)
-		tmp = tmp->next;
-	free(list);
-	return (tmp);
+	node = *list;
+	while (node->next->next)
+		node = node->next;
+	tmp = node->next;
+	node->next = NULL;
+	free(tmp);
 }
