@@ -1,28 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   ft_list_add_back.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: knaumov <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/30 14:31:29 by knaumov           #+#    #+#             */
-/*   Updated: 2018/11/05 20:51:08 by knaumov          ###   ########.fr       */
+/*   Created: 2018/11/05 22:02:55 by knaumov           #+#    #+#             */
+/*   Updated: 2018/11/05 22:02:56 by knaumov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "operation.h"
 
-int		ft_list_size(t_list *root)
+t_list	*ft_list_add_back(t_list *list, int data)
 {
-	int		i;
-	t_list	*entity;
+	t_list		*begining;
+	t_list		*node;
 
-	i = 0;
-	if (root)
+	if (list == NULL)
 	{
-		entity = root;
-		while (entity)
-			(entity = entity->next) && i++;
+		list = (t_list *)malloc(sizeof(t_list));
+		list->data = data;
+		list->next = NULL;
+		return (list);
 	}
-	return (i);
+	node = (t_list *)malloc(sizeof(t_list));
+	begining = list;
+	node->next = NULL;
+	node->data = data;
+	while (list->next)
+		list = list->next;
+	list->next = node;
+	return (begining);
 }

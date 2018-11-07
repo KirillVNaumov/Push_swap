@@ -13,6 +13,7 @@
 #ifndef OPERATIONS_H
 # define OPERATIONS_H
 
-# include "../libft/libft.h"
+# include "utils.h"
+
 
 # endif

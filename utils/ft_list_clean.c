@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_list_clean.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: knaumov <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/05 15:28:26 by knaumov           #+#    #+#             */
-/*   Updated: 2018/11/05 15:39:23 by knaumov          ###   ########.fr       */
+/*   Created: 2018/11/05 20:45:03 by knaumov           #+#    #+#             */
+/*   Updated: 2018/11/05 20:54:47 by knaumov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "operation.h"
 
-# include "utils.h"
-# include "operations.h"
+void	ft_list_clean(t_list **list)
+{
+	t_list *node;
 
-# endif
+	if (*list == NULL)
+		return ;
+	node = *list;
+	if (node->next)
+		ft_list_clean(&node->next);
+	free(*list);
+}

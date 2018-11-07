@@ -6,7 +6,7 @@
 #    By: knaumov <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/10 09:50:35 by knaumov           #+#    #+#              #
-#    Updated: 2018/11/05 22:21:41 by knaumov          ###   ########.fr        #
+#    Updated: 2018/11/06 15:22:57 by knaumov          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,19 +64,6 @@ FILES = ./ft_atoi.c \
 		./ft_strtrim.c \
 		./ft_tolower.c \
 		./ft_toupper.c \
-		./ft_list_add_back.c \
-		./ft_list_add_front.c \
-		./ft_list_remove_front.c \
-		./ft_list_remove_back.c \
-		./ft_list_clean.c \
-		./ft_list_size.c \
-		./ft_btree_apply_infix.c \
-		./ft_btree_apply_prefix.c \
-		./ft_btree_apply_suffix.c \
-		./ft_btree_create_node.c \
-		./ft_btree_insert_data.c \
-		./ft_btree_level_count.c \
-		./ft_btree_search_item.c \
 		./ft_itoa_base.c \
 		./get_next_line.c \
 		./ft_putunsignedint.c \
@@ -175,19 +162,6 @@ OBJ =   ./ft_atoi.o \
 		./ft_strtrim.o \
 		./ft_tolower.o \
 		./ft_toupper.o \
-		./ft_list_add_back.o \
-		./ft_list_add_front.o \
-		./ft_list_remove_front.o \
-		./ft_list_remove_back.o \
-		./ft_list_clean.o \
-		./ft_list_size.o \
-		./ft_btree_apply_infix.o \
-		./ft_btree_apply_prefix.o \
-		./ft_btree_apply_suffix.o \
-		./ft_btree_create_node.o \
-		./ft_btree_insert_data.o \
-		./ft_btree_level_count.o \
-		./ft_btree_search_item.o \
 		./ft_itoa_base.o \
 		./get_next_line.o \
 		./ft_putunsignedint.o \

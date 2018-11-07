@@ -4,7 +4,7 @@ void		swap(t_list *list)
 {
 	t_list		*elem1;
 	t_list		*elem2;
-	void		*tmp;
+	int			tmp;
 
 	if (ft_list_size(list) < 2)
 		return ;

@@ -14,7 +14,9 @@ INCLUDES = -I ./includes
 
 SRCS_C = ./srcs/checker/*
 SRCS_P = ./srcs/push_swap/*
-SRCS_OPER = ./srcs/operations/*
+SRCS_OPER = ./srcs/operations/*.c
+
+UTILS = ./utils/*
 
 LIBFT = libft/libft.a
 LIB_C = lib_checker.a

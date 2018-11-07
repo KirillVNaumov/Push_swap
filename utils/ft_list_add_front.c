@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_clean.c                                    :+:      :+:    :+:   */
+/*   ft_list_add_front.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: knaumov <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/05 20:45:03 by knaumov           #+#    #+#             */
-/*   Updated: 2018/11/05 20:54:47 by knaumov          ###   ########.fr       */
+/*   Created: 2018/11/05 22:03:32 by knaumov           #+#    #+#             */
+/*   Updated: 2018/11/05 22:04:09 by knaumov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "operation.h"
 
-void	ft_list_clean(t_list **list)
+t_list	*ft_list_add_front(t_list *list, int data)
 {
-	t_list *node;
+	t_list		*node;
 
-	if (*list == NULL)
-		return ;
-	node = *list;
-	if (node->next)
-		ft_list_clean(&node->next);
-	free(*list);
+	if (list == NULL)
+	{
+		list = (t_list *)malloc(sizeof(t_list));
+		list->data = data;
+		list->next = NULL;
+		return (list);
+	}
+	node = (t_list *)malloc(sizeof(t_list));
+	node->next = list;
+	node->data = data;
+	return (node);
 }

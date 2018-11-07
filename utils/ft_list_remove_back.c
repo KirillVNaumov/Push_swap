@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_add_front.c                                :+:      :+:    :+:   */
+/*   ft_list_remove_back.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: knaumov <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/05 22:03:32 by knaumov           #+#    #+#             */
-/*   Updated: 2018/11/05 22:04:09 by knaumov          ###   ########.fr       */
+/*   Created: 2018/11/05 22:20:10 by knaumov           #+#    #+#             */
+/*   Updated: 2018/11/05 22:20:13 by knaumov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "operation.h"
 
-t_list	*ft_list_add_front(t_list *list, void *data)
+t_list	*ft_list_remove_back(t_list *list)
 {
-	t_list		*node;
+	t_list		*tmp;
 
-	if (list == NULL)
+	if (ft_list_size(list) == 0)
+		return (NULL);
+	if (ft_list_size(list) == 1)
 	{
-		list = (t_list *)malloc(sizeof(t_list));
-		list->data = data;
-		list->next = NULL;
-		return (list);
+		ft_list_clean(&list);
+		return (NULL);
 	}
-	node = (t_list *)malloc(sizeof(t_list));
-	node->next = list;
-	node->data = data;
-	return (node);
+	tmp = list;
+	while (tmp->next)
+		tmp = tmp->next;
+	free(list);
+	return (tmp);
 }

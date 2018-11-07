@@ -6,7 +6,7 @@
 /*   By: knaumov <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 13:05:51 by knaumov           #+#    #+#             */
-/*   Updated: 2018/11/05 22:21:17 by knaumov          ###   ########.fr       */
+/*   Updated: 2018/11/06 15:21:51 by knaumov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,35 +88,6 @@ void				ft_putstr_fd(char const *s, int fd);
 void				ft_putwstr_fd(wchar_t *s, int fd);
 void				ft_putendl_fd(char const *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
-typedef struct		s_list
-{
-	void			*data;
-	struct s_list	*next;
-}					t_list;
-void				ft_list_clean(t_list **list);
-t_list				*ft_list_add_back(t_list *list, void *data);
-t_list				*ft_list_add_front(t_list *list, void *data);
-t_list				*ft_list_remove_back(t_list *list);
-t_list				*ft_list_remove_front(t_list *list);
-typedef struct		s_btree
-{
-	void			*item;
-	struct s_btree	*left;
-	struct s_btree	*right;
-
-}					t_btree;
-t_btree				*ft_btree_create_node(void *item);
-void				ft_btree_apply_infix(t_btree *root, void (*applyf)(void *));
-void				ft_btree_apply_suffix(t_btree *root, \
-		void (*applyf)(void *));
-void				ft_btree_apply_prefix(t_btree *root, \
-		void (*applyf)(void *));
-void				*ft_btree_search_item(t_btree *root, void *data_ref,\
-		int (*cmpf)(void *, void *));
-int					ft_btree_level_count(t_btree *root);
-void				ft_btree_insert_data(t_btree **root, void *item, \
-		int (*cmpf)(void *, void *));
-int					ft_list_size(t_list *root);
 char				*ft_itoa_base(intmax_t value, int base);
 int					get_next_line(const int fd, char **line);
 char				*ft_strcon(char **arr, char *c);
