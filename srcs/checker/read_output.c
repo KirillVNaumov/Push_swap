@@ -1,13 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   read_output.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: knaumov <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/11/09 11:49:21 by knaumov           #+#    #+#             */
+/*   Updated: 2018/11/09 11:50:08 by knaumov          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "checker.h"
 
-int		read_output(t_list **stack_a, int flag_v)
+int		read_output(t_list **stack_a, int flag_v, int flag_c)
 {
 	t_list		*stack_b;
 	char		*input;
 
 	stack_b = NULL;
-	// if (check_duplicates(stack_a) == -1)
-	// 	return (-1);
+	if (check_for_duplicates(*stack_a) == -1)
+		return (-1);
 	while (get_next_line(0, &input) > 0)
 	{
 		if (!ft_strcmp(input, "sa"))
@@ -43,10 +55,10 @@ int		read_output(t_list **stack_a, int flag_v)
 		}
 		else if (!ft_strcmp(input, "exit"))
 			break ;
-		else 
+		else
 			return (-1);
 		if (flag_v == 1)
-			print_status(*stack_a, stack_b);
+			print_status(*stack_a, stack_b, flag_c);
 		ft_strdel(&input);
 	}
 	check_result(stack_a, stack_b);

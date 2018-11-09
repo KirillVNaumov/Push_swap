@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations.h                                       :+:      :+:    :+:   */
+/*   ft_list_ndup.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: knaumov <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/05 15:38:22 by knaumov           #+#    #+#             */
-/*   Updated: 2018/11/09 11:36:23 by knaumov          ###   ########.fr       */
+/*   Created: 2018/11/09 11:40:09 by knaumov           #+#    #+#             */
+/*   Updated: 2018/11/09 11:40:10 by knaumov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef OPERATIONS_H
-# define OPERATIONS_H
+#include "utils.h"
 
-# include "utils.h"
+t_list		*ft_list_ndup(t_list *list, int size)
+{
+	t_list	*new;
+	t_list	*tmp;
 
-void		swap(t_list **list);
-void		push(t_list **src, t_list **dst);
-void		rotate(t_list **list);
-void		reverse_rotate(t_list **list);
-void		print_status(t_list *stack_a, t_list *stack_b, int color);
-
-#endif
+	new = NULL;
+	tmp = list;
+	while (tmp && size > 0)
+	{
+		new = ft_list_add_back(new, tmp->data);
+		tmp = tmp->next;
+		--size;
+	}
+	return (tmp);
+}

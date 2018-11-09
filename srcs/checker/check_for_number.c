@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations.h                                       :+:      :+:    :+:   */
+/*   check_for_number.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: knaumov <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/05 15:38:22 by knaumov           #+#    #+#             */
-/*   Updated: 2018/11/09 11:36:23 by knaumov          ###   ########.fr       */
+/*   Created: 2018/11/09 11:47:16 by knaumov           #+#    #+#             */
+/*   Updated: 2018/11/09 11:48:01 by knaumov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef OPERATIONS_H
-# define OPERATIONS_H
+#include "checker.h"
 
-# include "utils.h"
+int		check_for_number(char *str)
+{
+	int	i;
 
-void		swap(t_list **list);
-void		push(t_list **src, t_list **dst);
-void		rotate(t_list **list);
-void		reverse_rotate(t_list **list);
-void		print_status(t_list *stack_a, t_list *stack_b, int color);
-
-#endif
+	i = 0;
+	if (str[0] == '-')
+		i++;
+	while (str[i])
+	{
+		if (str[i] >= '0' && str[i] <= '9')
+			i++;
+		else
+			return (-1);
+	}
+	return (0);
+}

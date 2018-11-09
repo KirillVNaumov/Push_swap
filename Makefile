@@ -52,7 +52,7 @@ $(LIB_OPER):
 
 $(EXEC_C):
 	@echo "$(GREEN)Making objects files for $(GREEN_EXTRA)$(LIB_C)$(RESET)"
-	@gcc -Wall -Wextra -Werror $(SRCS_C) $(INCLUDES) -c
+	@gcc -Wall -Wextra -Werror $(SRCS_C) $(INCLUDES) -c -g
 	@echo "$(GREEN)Compiling $(GREEN_EXTRA)$(LIB_C)$(RESET)"
 	@ar rc $(LIB_C) *.o
 	@ranlib $(LIB_C)
@@ -66,7 +66,7 @@ $(EXEC_C):
 
 $(EXEC_P):
 	@echo "$(GREEN)Making objects files for $(GREEN_EXTRA)$(LIB_P)$(RESET)"
-	@gcc -Wall -Wextra -Werror $(SRCS_P) $(INCLUDES) -c
+	@gcc -Wall -Wextra -Werror $(SRCS_P) $(INCLUDES) -c -g
 	@echo "$(GREEN)Compiling $(GREEN_EXTRA)$(LIB_P)$(RESET)"
 	@ar rc $(LIB_P) *.o
 	@ranlib $(LIB_P)

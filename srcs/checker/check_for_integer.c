@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations.h                                       :+:      :+:    :+:   */
+/*   check_for_integer.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: knaumov <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/05 15:38:22 by knaumov           #+#    #+#             */
-/*   Updated: 2018/11/09 11:36:23 by knaumov          ###   ########.fr       */
+/*   Created: 2018/11/09 11:47:00 by knaumov           #+#    #+#             */
+/*   Updated: 2018/11/09 11:47:04 by knaumov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef OPERATIONS_H
-# define OPERATIONS_H
+#include "checker.h"
 
-# include "utils.h"
-
-void		swap(t_list **list);
-void		push(t_list **src, t_list **dst);
-void		rotate(t_list **list);
-void		reverse_rotate(t_list **list);
-void		print_status(t_list *stack_a, t_list *stack_b, int color);
-
-#endif
+int		check_for_integer(char *str)
+{
+	if (str[0] == '-')
+		if (ft_strlen(str) > 11)
+			return (-1);
+	if (str[0] != '-')
+		if (ft_strlen(str) > 10)
+			return (-1);
+	if (str[0] == '-' && ft_strlen(str) == 11)
+		if (ft_strcmp(str, "-2147483648") > 0)
+			return (-1);
+	if (str[0] != '-' && ft_strlen(str) == 10)
+		if (ft_strcmp(str, "2147483647") > 0)
+			return (-1);
+	return (0);
+}

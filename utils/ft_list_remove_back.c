@@ -6,13 +6,13 @@
 /*   By: knaumov <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/05 22:20:10 by knaumov           #+#    #+#             */
-/*   Updated: 2018/11/05 22:20:13 by knaumov          ###   ########.fr       */
+/*   Updated: 2018/11/09 11:40:38 by knaumov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-void 	ft_list_remove_back(t_list **list)
+void			ft_list_remove_back(t_list **list)
 {
 	t_list		*tmp;
 	t_list		*node;

@@ -1,24 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations.h                                       :+:      :+:    :+:   */
+/*   check_for_duplicates.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: knaumov <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/05 15:38:22 by knaumov           #+#    #+#             */
-/*   Updated: 2018/11/09 11:36:23 by knaumov          ###   ########.fr       */
+/*   Created: 2018/11/09 11:45:38 by knaumov           #+#    #+#             */
+/*   Updated: 2018/11/09 11:46:49 by knaumov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef OPERATIONS_H
-# define OPERATIONS_H
+#include "checker.h"
 
-# include "utils.h"
+int			check_for_duplicates(t_list *stack)
+{
+	t_list	*tmp;
+	int		count;
 
-void		swap(t_list **list);
-void		push(t_list **src, t_list **dst);
-void		rotate(t_list **list);
-void		reverse_rotate(t_list **list);
-void		print_status(t_list *stack_a, t_list *stack_b, int color);
-
-#endif
+	while (stack)
+	{
+		count = 0;
+		tmp = stack;
+		while (tmp)
+		{
+			if (stack->data == tmp->data)
+			{
+				count++;
+				if (count > 1)
+					return (-1);
+			}
+			tmp = tmp->next;
+		}
+		stack = stack->next;
+	}
+	return (0);
+}

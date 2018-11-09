@@ -6,13 +6,13 @@
 /*   By: knaumov <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/05 22:20:34 by knaumov           #+#    #+#             */
-/*   Updated: 2018/11/05 22:20:35 by knaumov          ###   ########.fr       */
+/*   Updated: 2018/11/09 11:41:04 by knaumov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-void 	ft_list_remove_front(t_list **list)
+void			ft_list_remove_front(t_list **list)
 {
 	t_list		*tmp;
 	t_list		*node;
