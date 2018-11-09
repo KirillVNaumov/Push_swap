@@ -22,6 +22,7 @@
 typedef struct		s_list
 {
 	int				data;
+	int				pos;
 	struct s_list	*next;
 }					t_list;
 int					ft_list_size(t_list *root);

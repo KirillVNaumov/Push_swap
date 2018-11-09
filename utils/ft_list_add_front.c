@@ -21,10 +21,12 @@ t_list	*ft_list_add_front(t_list *list, int data)
 		list = (t_list *)malloc(sizeof(t_list));
 		list->data = data;
 		list->next = NULL;
+		list->pos = 0;
 		return (list);
 	}
 	node = (t_list *)malloc(sizeof(t_list));
 	node->next = list;
 	node->data = data;
+	node->pos = 0;
 	return (node);
 }
