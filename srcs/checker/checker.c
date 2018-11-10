@@ -6,13 +6,13 @@
 /*   By: knaumov <knaumov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 11:48:27 by knaumov           #+#    #+#             */
-/*   Updated: 2018/11/09 16:04:06 by amelikia         ###   ########.fr       */
+/*   Updated: 2018/11/10 14:21:05 by amelikia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-int		main_helper_function(int i, int argc, char **argv, t_list **stack)
+int		add_to_list(int i, int argc, char **argv, t_list **stack)
 {
 	while (i < argc)
 	{
@@ -26,7 +26,7 @@ int		main_helper_function(int i, int argc, char **argv, t_list **stack)
 	return (1);
 }
 
-void	oh_plz(char **argv, int *i, int *flag_c, int *flag_v)
+void	color_and_status_check(char **argv, int *i, int *flag_c, int *flag_v)
 {
 	if (!ft_strcmp(argv[*i], "-v"))
 	{
@@ -72,8 +72,8 @@ int		main(int argc, char **argv)
 	stack = NULL;
 	if (argc >= 2)
 	{
-		oh_plz(argv, &i, &flag_c, &flag_v);
-		if (main_helper_function(i, argc, argv, &stack) == 0)
+		color_and_status_check(argv, &i, &flag_c, &flag_v);
+		if (add_to_list(i, argc, argv, &stack) == 0)
 			return (0);
 	}
 	check_for_error(argc, flag_c, flag_v, &stack);

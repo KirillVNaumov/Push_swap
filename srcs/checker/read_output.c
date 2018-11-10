@@ -6,13 +6,13 @@
 /*   By: knaumov <knaumov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 11:49:21 by knaumov           #+#    #+#             */
-/*   Updated: 2018/11/09 15:55:01 by amelikia         ###   ########.fr       */
+/*   Updated: 2018/11/10 14:22:13 by amelikia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-void	no_helper_function(char **input, t_list **stack_a, t_list **stack_b)
+void	run_input_1(char **input, t_list **stack_a, t_list **stack_b)
 {
 	if (!ft_strcmp(*input, "sa"))
 		swap(stack_a);
@@ -38,7 +38,7 @@ void	no_helper_function(char **input, t_list **stack_a, t_list **stack_b)
 	}
 }
 
-void	mega_helper_function(char **input, t_list **stack_a, t_list **stack_b)
+void	run_input_2(char **input, t_list **stack_a, t_list **stack_b)
 {
 	if (!ft_strcmp(*input, "rra"))
 		reverse_rotate(stack_a);
@@ -51,7 +51,7 @@ void	mega_helper_function(char **input, t_list **stack_a, t_list **stack_b)
 	}
 }
 
-int		omega_helper_function(char *input)
+int		check_input(char *input)
 {
 	if ((!ft_strcmp(input, "rr")) || (!ft_strcmp(input, "rb")) ||
 		(!ft_strcmp(input, "ra")) || (!ft_strcmp(input, "pa")) ||
@@ -73,10 +73,10 @@ int		read_output(t_list **stack_a, int flag_v, int flag_c)
 		return (-1);
 	while (get_next_line(0, &input) > 0)
 	{
-		if (omega_helper_function(input) == 1)
-			no_helper_function(&input, stack_a, &stack_b);
-		if (omega_helper_function(input) == 1)
-			mega_helper_function(&input, stack_a, &stack_b);
+		if (check_input(input) == 1)
+			run_input_1(&input, stack_a, &stack_b);
+		if (check_input(input) == 1)
+			run_input_2(&input, stack_a, &stack_b);
 		else if (!ft_strcmp(input, "exit"))
 			break ;
 		else
