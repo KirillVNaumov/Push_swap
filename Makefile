@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: knaumov <marvin@42.fr>                     +#+  +:+       +#+         #
+#    By: knaumov <knaumov@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/05 15:18:06 by knaumov           #+#    #+#              #
-#    Updated: 2018/11/06 10:44:28 by knaumov          ###   ########.fr        #
+#    Updated: 2018/11/09 15:31:28 by amelikia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,7 @@ $(LIB_OPER):
 	@if [ ! -d "./obj" ]; then mkdir -p $(OBJ); fi
 	@echo "$(GREEN)Moving objects files for $(GREEN_EXTRA)$(LIB_OPER)$(GREEN) to $(OBJ)$(RESET)"
 	@mv *.o $(OBJ)
-	#@make -C libft
+	@make -C libft
 	@echo "$(BLUE_EXTRA)$(LIB_OPER)$(BLUE): Complete$(RESET)"
 
 $(EXEC_C):
@@ -84,7 +84,7 @@ clean:
 	echo "$(RED)Deleting objects for $(RED_EXTRA)$(LIB_P)$(RESET)"; \
 	/bin/rm -rf $(OBJ); \
 	fi
-	#@make -C libft clean
+	@make -C libft clean
 	@echo "$(BLUE_EXTRA)clean$(BLUE): Complete$(RESET)"
 
 fclean: clean
@@ -113,7 +113,7 @@ fclean: clean
 	/bin/rm -f $(EXEC_P); \
 	fi
 
-	#@make -C libft fclean
+	@make -C libft fclean
 	@echo "$(BLUE_EXTRA)fclean$(BLUE): Complete$(RESET)"
 
 re: fclean all

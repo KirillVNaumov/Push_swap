@@ -3,14 +3,65 @@
 /*                                                        :::      ::::::::   */
 /*   read_output.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: knaumov <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: knaumov <knaumov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 11:49:21 by knaumov           #+#    #+#             */
-/*   Updated: 2018/11/09 11:50:08 by knaumov          ###   ########.fr       */
+/*   Updated: 2018/11/09 15:55:01 by amelikia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
+
+void	no_helper_function(char **input, t_list **stack_a, t_list **stack_b)
+{
+	if (!ft_strcmp(*input, "sa"))
+		swap(stack_a);
+	else if (!ft_strcmp(*input, "sb"))
+		swap(stack_b);
+	else if (!ft_strcmp(*input, "ss"))
+	{
+		swap(stack_a);
+		swap(stack_b);
+	}
+	else if (!ft_strcmp(*input, "pa"))
+		push(stack_b, stack_a);
+	else if (!ft_strcmp(*input, "pb"))
+		push(stack_a, stack_b);
+	else if (!ft_strcmp(*input, "ra"))
+		rotate(stack_a);
+	else if (!ft_strcmp(*input, "rb"))
+		rotate(stack_b);
+	else if (!ft_strcmp(*input, "rr"))
+	{
+		rotate(stack_a);
+		rotate(stack_b);
+	}
+}
+
+void	mega_helper_function(char **input, t_list **stack_a, t_list **stack_b)
+{
+	if (!ft_strcmp(*input, "rra"))
+		reverse_rotate(stack_a);
+	else if (!ft_strcmp(*input, "rrb"))
+		reverse_rotate(stack_b);
+	else if (!ft_strcmp(*input, "rrr"))
+	{
+		reverse_rotate(stack_a);
+		reverse_rotate(stack_b);
+	}
+}
+
+int		omega_helper_function(char *input)
+{
+	if ((!ft_strcmp(input, "rr")) || (!ft_strcmp(input, "rb")) ||
+		(!ft_strcmp(input, "ra")) || (!ft_strcmp(input, "pa")) ||
+		(!ft_strcmp(input, "sa")) || (!ft_strcmp(input, "sb")) ||
+		(!ft_strcmp(input, "pb")) || (!ft_strcmp(input, "ss")) ||
+		(!ft_strcmp(input, "rrr")) || (!ft_strcmp(input, "rrb")) ||
+		(!ft_strcmp(input, "rra")))
+		return (1);
+	return (-1);
+}
 
 int		read_output(t_list **stack_a, int flag_v, int flag_c)
 {
@@ -22,37 +73,10 @@ int		read_output(t_list **stack_a, int flag_v, int flag_c)
 		return (-1);
 	while (get_next_line(0, &input) > 0)
 	{
-		if (!ft_strcmp(input, "sa"))
-			swap(stack_a);
-		else if (!ft_strcmp(input, "sb"))
-			swap(&stack_b);
-		else if (!ft_strcmp(input, "ss"))
-		{
-			swap(stack_a);
-			swap(&stack_b);
-		}
-		else if (!ft_strcmp(input, "pa"))
-			push(&stack_b, stack_a);
-		else if (!ft_strcmp(input, "pb"))
-			push(stack_a, &stack_b);
-		else if (!ft_strcmp(input, "ra"))
-			rotate(stack_a);
-		else if (!ft_strcmp(input, "rb"))
-			rotate(&stack_b);
-		else if (!ft_strcmp(input, "rr"))
-		{
-			rotate(stack_a);
-			rotate(&stack_b);
-		}
-		else if (!ft_strcmp(input, "rra"))
-			reverse_rotate(stack_a);
-		else if (!ft_strcmp(input, "rrb"))
-			reverse_rotate(&stack_b);
-		else if (!ft_strcmp(input, "rrr"))
-		{
-			reverse_rotate(stack_a);
-			reverse_rotate(&stack_b);
-		}
+		if (omega_helper_function(input) == 1)
+			no_helper_function(&input, stack_a, &stack_b);
+		if (omega_helper_function(input) == 1)
+			mega_helper_function(&input, stack_a, &stack_b);
 		else if (!ft_strcmp(input, "exit"))
 			break ;
 		else
