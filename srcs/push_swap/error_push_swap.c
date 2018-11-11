@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_for_error.c                                  :+:      :+:    :+:   */
+/*   error_push_swap.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amelikia <amelikia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/10 14:31:01 by amelikia          #+#    #+#             */
-/*   Updated: 2018/11/10 14:31:10 by amelikia         ###   ########.fr       */
+/*   Created: 2018/11/10 14:39:13 by amelikia          #+#    #+#             */
+/*   Updated: 2018/11/11 13:35:54 by amelikia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "push_swap.h"
 
-void	check_for_error(int argc, int flag_c, int flag_v, t_list **stack)
+void	error_push_swap(int argc, int flag_c, int flag_v, t_list **stack)
 {
 	if (argc == 1)
 	{
@@ -24,7 +24,7 @@ void	check_for_error(int argc, int flag_c, int flag_v, t_list **stack)
 		ft_printf("Error\n");
 		return ;
 	}
-	if (read_output(stack, flag_v, flag_c) == -1)
+	if (find_solution(stack, flag_v, flag_c) == -1)
 	{
 		ft_printf("Error\n");
 		return ;

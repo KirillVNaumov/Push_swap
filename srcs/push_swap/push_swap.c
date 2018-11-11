@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: knaumov <knaumov@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amelikia <amelikia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/09 11:48:27 by knaumov           #+#    #+#             */
-/*   Updated: 2018/11/10 14:37:32 by amelikia         ###   ########.fr       */
+/*   Created: 2018/11/10 14:38:58 by amelikia          #+#    #+#             */
+/*   Updated: 2018/11/11 13:24:55 by amelikia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "push_swap.h"
 
-int		main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	int		i;
 	int		flag_v;
@@ -29,5 +29,5 @@ int		main(int argc, char **argv)
 		if (add_to_list(i, argc, argv, &stack) == 0)
 			return (0);
 	}
-	error_checker(argc, flag_c, flag_v, &stack);
+	error_push_swap(argc, flag_c, flag_v, &stack);
 }
