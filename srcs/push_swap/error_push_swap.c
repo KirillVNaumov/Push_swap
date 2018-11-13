@@ -14,12 +14,7 @@
 
 void	error_push_swap(int argc, int flag_c, int flag_v, t_list **stack)
 {
-	if (argc == 1)
-	{
-		ft_printf("Error\n");
-		return ;
-	}
-	if (*stack == NULL)
+	if (argc == 1 || *stack == NULL)
 	{
 		ft_printf("Error\n");
 		return ;

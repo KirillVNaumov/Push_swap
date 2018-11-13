@@ -29,5 +29,6 @@ int		main(int argc, char **argv)
 		if (add_to_list(i, argc, argv, &stack) == 0)
 			return (0);
 	}
+	stack = list_assign_pos(stack);
 	error_checker(argc, flag_c, flag_v, &stack);
 }

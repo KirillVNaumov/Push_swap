@@ -23,8 +23,8 @@ int	find_solution(t_list **stack_a, int flag_v, int flag_c)
 		return (-1);
 	while (1)
 	{
-		if (solver(stack_a, &stack_b) == 1)
-			stop = 1;
+		// if (solver(stack_a, &stack_b) == 1)
+		// 	stop = 1;
 		if (flag_v == 1)
 			print_status(*stack_a, stack_b, flag_c);
 		if (stop == 1)
