@@ -35,5 +35,6 @@ void				ft_list_remove_back(t_list **list);
 void				ft_list_remove_front(t_list **list);
 int					find_max_length(t_list *list);
 t_list				*list_assign_pos(t_list *stack);
+int					add_to_list(int i, int argc, char **argv, t_list **stack);
 
 #endif

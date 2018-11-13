@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_for_integer.c                                :+:      :+:    :+:   */
+/*   check_for_number.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: knaumov <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/09 11:47:00 by knaumov           #+#    #+#             */
-/*   Updated: 2018/11/09 11:47:04 by knaumov          ###   ########.fr       */
+/*   Created: 2018/11/09 11:47:16 by knaumov           #+#    #+#             */
+/*   Updated: 2018/11/09 11:48:01 by knaumov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "operations.h"
 
-int		check_for_integer(char *str)
+int		check_for_number(char *str)
 {
+	int	i;
+
+	i = 0;
 	if (str[0] == '-')
-		if (ft_strlen(str) > 11)
+		i++;
+	while (str[i])
+	{
+		if (str[i] >= '0' && str[i] <= '9')
+			i++;
+		else
 			return (-1);
-	if (str[0] != '-')
-		if (ft_strlen(str) > 10)
-			return (-1);
-	if (str[0] == '-' && ft_strlen(str) == 11)
-		if (ft_strcmp(str, "-2147483648") > 0)
-			return (-1);
-	if (str[0] != '-' && ft_strlen(str) == 10)
-		if (ft_strcmp(str, "2147483647") > 0)
-			return (-1);
+	}
 	return (0);
 }

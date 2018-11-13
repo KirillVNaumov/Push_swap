@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "operations.h"
 
 int			check_for_duplicates(t_list *stack)
 {

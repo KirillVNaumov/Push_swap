@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   add_to_list.c                                      :+:      :+:    :+:   */
+/*   color_and_status_check.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amelikia <amelikia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/10 14:31:24 by amelikia          #+#    #+#             */
-/*   Updated: 2018/11/10 14:31:25 by amelikia         ###   ########.fr       */
+/*   Created: 2018/11/10 14:31:54 by amelikia          #+#    #+#             */
+/*   Updated: 2018/11/10 14:31:56 by amelikia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "operations.h"
 
-int		add_to_list(int i, int argc, char **argv, t_list **stack)
+void	color_and_status_check(char **argv, int *i, int *flag_c, int *flag_v)
 {
-	while (i < argc)
+	if (!ft_strcmp(argv[*i], "-v"))
 	{
-		if (check_for_number(argv[i]) == -1 || check_for_integer(argv[i]) == -1)
-		{
-			ft_printf("Error\n");
-			return (0);
-		}
-		*stack = ft_list_add_back((*stack), ft_atoi(argv[i++]));
+		*flag_v = 1;
+		(*i)++;
 	}
-	return (1);
+	if (!ft_strcmp(argv[*i], "-c"))
+	{
+		*flag_c = 1;
+		(*i)++;
+	}
 }

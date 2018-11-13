@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "operations.h": "c",
+        "checker.h": "c"
+    }
+}
