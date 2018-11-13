@@ -34,5 +34,6 @@ t_list				*ft_list_ndup(t_list *list, int size);
 void				ft_list_remove_back(t_list **list);
 void				ft_list_remove_front(t_list **list);
 int					find_max_length(t_list *list);
+t_list				*list_assign_pos(t_list *stack);
 
 #endif
