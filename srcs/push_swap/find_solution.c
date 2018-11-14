@@ -19,9 +19,6 @@ int	find_solution(t_list **stack_a, int flag_v, int flag_c)
 
 	stop = 0;
 	stack_b = NULL;
-	if (check_for_duplicates(*stack_a) == -1)
-		return (-1);
-	*stack_a = list_assign_pos(*stack_a);
 	while (1)
 	{
 		// if (solver(stack_a, &stack_b) == 1)

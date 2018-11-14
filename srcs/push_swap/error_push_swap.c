@@ -12,16 +12,22 @@
 
 #include "push_swap.h"
 
-void	error_push_swap(int argc, int flag_c, int flag_v, t_list **stack)
+void	error_push_swap(int flag_optimized, int flag_c, int flag_v, t_list **stack)
 {
-	if (argc == 1 || *stack == NULL)
+	*stack = list_assign_pos(*stack);
+	if (*stack == NULL)
 	{
 		ft_printf("Error\n");
 		return ;
 	}
-	if (find_solution(stack, flag_v, flag_c) == -1)
+	if (flag_optimized == 0)
 	{
-		ft_printf("Error\n");
-		return ;
+		if (find_solution(stack, flag_v, flag_c) == -1 || check_for_duplicates(*stack) == -1)
+		{
+			ft_printf("Error\n");
+			return ;
+		}
 	}
+	else
+		find_optimal_solution(*stack);
 }
