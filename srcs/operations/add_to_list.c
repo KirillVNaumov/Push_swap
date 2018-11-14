@@ -14,6 +14,11 @@
 
 int		add_to_list(int i, int argc, char **argv, t_list **stack)
 {
+	if (!argv[i])
+	{
+		ft_printf("Error\n");
+		return (0);
+	}
 	while (i < argc)
 	{
 		if (check_for_number(argv[i]) == -1 || check_for_integer(argv[i]) == -1)

@@ -25,6 +25,11 @@ typedef struct		s_list
 	int				pos;
 	struct s_list	*next;
 }					t_list;
+typedef struct		s_comm
+{
+	char			*command;
+	struct s_comm	*next;
+}					t_comm;
 int					ft_list_size(t_list *root);
 t_list				*ft_list_add_back(t_list *list, int data);
 t_list				*ft_list_add_front(t_list *list, int data);
@@ -36,5 +41,7 @@ void				ft_list_remove_front(t_list **list);
 int					find_max_length(t_list *list);
 t_list				*list_assign_pos(t_list *stack);
 int					add_to_list(int i, int argc, char **argv, t_list **stack);
+t_comm				*ft_comm_add_front(t_comm *list, char *command);
+t_comm				*ft_comm_add_back(t_comm *list, char *command);
 
 #endif

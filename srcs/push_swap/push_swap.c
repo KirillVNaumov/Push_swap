@@ -20,14 +20,13 @@ int	main(int argc, char **argv)
 	int		flag_optimized;
 	t_list	*stack;
 
-	i = 1;
 	flag_v = 0;
 	flag_c = 0;
 	flag_optimized = 0;
 	stack = NULL;
 	if (argc >= 2)
 	{
-		color_and_status_check(argv, &i, &flag_c, &flag_v);
+		i = color_and_status_check(argv, &flag_c, &flag_v, &flag_optimized);
 		if (add_to_list(i, argc, argv, &stack) == 0)
 			return (0);
 	}

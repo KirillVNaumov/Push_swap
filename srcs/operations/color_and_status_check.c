@@ -12,16 +12,31 @@
 
 #include "operations.h"
 
-void	color_and_status_check(char **argv, int *i, int *flag_c, int *flag_v)
+int	color_and_status_check(char **argv, int *flag_c, int *flag_v, int *flag_o)
 {
-	if (!ft_strcmp(argv[*i], "-v"))
+	int j;
+	int	i;
+
+	j = 0;
+	i = 1;
+	while(j <= 2)
 	{
-		*flag_v = 1;
-		(*i)++;
+		if (argv[i] && !ft_strcmp(argv[i], "-v"))
+		{
+			*flag_v = 1;
+			i++;
+		}
+		if (argv[i] && !ft_strcmp(argv[i], "-c"))
+		{
+			*flag_c = 1;
+			i++;
+		}
+		if (argv[i] && !ft_strcmp(argv[i], "-o"))
+		{
+			*flag_o = 1;
+			i++;
+		}
+		j++;
 	}
-	if (!ft_strcmp(argv[*i], "-c"))
-	{
-		*flag_c = 1;
-		(*i)++;
-	}
+	return (i);
 }

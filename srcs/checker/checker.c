@@ -17,18 +17,24 @@ int		main(int argc, char **argv)
 	int		i;
 	int		flag_v;
 	int		flag_c;
+	int		flag_o;
 	t_list	*stack;
 
-	i = 1;
 	flag_v = 0;
 	flag_c = 0;
+	flag_o = 0;
 	stack = NULL;
 	if (argc >= 2)
 	{
-		color_and_status_check(argv, &i, &flag_c, &flag_v);
+		i = color_and_status_check(argv, &flag_c, &flag_v, &flag_o);
 		if (add_to_list(i, argc, argv, &stack) == 0)
 			return (0);
 	}
 	stack = list_assign_pos(stack);
+	// if (flag_o == 1)
+	// {
+	// 	ft_printf("Error\n");
+	// 	return (0);
+	// }
 	error_checker(argc, flag_c, flag_v, &stack);
 }
