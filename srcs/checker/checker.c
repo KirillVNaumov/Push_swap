@@ -31,10 +31,10 @@ int		main(int argc, char **argv)
 			return (0);
 	}
 	stack = list_assign_pos(stack);
-	// if (flag_o == 1)
-	// {
-	// 	ft_printf("Error\n");
-	// 	return (0);
-	// }
+	if (flag_o == 1)
+	{
+		ft_printf("Error\n");
+		return (0);
+	}
 	error_checker(argc, flag_c, flag_v, &stack);
 }

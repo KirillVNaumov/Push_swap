@@ -2,13 +2,16 @@
 
 int		check_answer(t_list *stack_a, t_list *stack_b)
 {
+	t_list		*tmp;
+
+	tmp = stack_a;
 	if (stack_b)
 		return (-1);
-	while (stack_a->next)
+	while (tmp->next)
 	{
-		if (stack_a->data > stack_a->next->data)
+		if (tmp->data > tmp->next->data)
 			return (-1);
-		stack_a = stack_a->next;
+		tmp = tmp->next;
 	}
 	return(1);
 }

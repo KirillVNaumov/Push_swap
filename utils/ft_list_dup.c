@@ -19,10 +19,12 @@ t_list		*ft_list_dup(t_list *list)
 
 	new = NULL;
 	tmp = list;
+	if (list == NULL)
+		return (NULL);
 	while (tmp)
 	{
 		new = ft_list_add_back(new, tmp->data);
 		tmp = tmp->next;
 	}
-	return (tmp);
+	return (new);
 }
