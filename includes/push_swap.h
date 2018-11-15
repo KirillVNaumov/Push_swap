@@ -21,5 +21,10 @@ int					find_solution(t_list **stack_a, int flag_v, int flag_c);
 void				find_optimal_solution(t_list *stack_a);
 int					check_answer(t_list *stack_a, t_list *stack_b);
 int					solver(t_list *stack_a, t_list *stack_b, t_comm **commands);
+int					search(t_list *stack_a, t_list *stack_b, int set_depth, t_comm **command_list);
+int         		swap_rec(t_list *stack_a, t_list *stack_b, int set_depth, t_comm **command_list);
+int    		 	    push_rec(t_list *stack_a, t_list *stack_b, int set_depth, t_comm **command_list);
+int     		    rotate_rec(t_list *stack_a, t_list *stack_b, int set_depth, t_comm **command_list);
+int         		reverse_rotate_rec(t_list *stack_a, t_list *stack_b, int set_depth, t_comm **command_list);
 
 #endif
