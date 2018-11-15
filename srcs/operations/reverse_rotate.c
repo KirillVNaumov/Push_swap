@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: knaumov <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: knaumov <knaumov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 11:44:18 by knaumov           #+#    #+#             */
-/*   Updated: 2018/11/09 11:44:19 by knaumov          ###   ########.fr       */
+/*   Updated: 2018/11/14 14:32:57 by amelikia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ void		reverse_rotate(t_list **list)
 	node = *list;
 	while (node->next)
 		node = node->next;
-	*list = ft_list_add_front(*list, node->data);
+	*list = ft_list_add_front(*list, node->data, node->pos);
 	ft_list_remove_back(list);
 }

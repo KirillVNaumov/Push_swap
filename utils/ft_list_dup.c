@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_list_dup.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: knaumov <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: knaumov <knaumov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 15:14:56 by knaumov           #+#    #+#             */
-/*   Updated: 2018/11/06 15:16:44 by knaumov          ###   ########.fr       */
+/*   Updated: 2018/11/14 14:35:48 by amelikia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_list		*ft_list_dup(t_list *list)
 		return (NULL);
 	while (tmp)
 	{
-		new = ft_list_add_back(new, tmp->data);
+		new = ft_list_add_back(new, tmp->data, tmp->pos);
 		tmp = tmp->next;
 	}
 	return (new);

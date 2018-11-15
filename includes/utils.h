@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: knaumov <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: knaumov <knaumov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 11:36:45 by knaumov           #+#    #+#             */
-/*   Updated: 2018/11/09 11:37:15 by knaumov          ###   ########.fr       */
+/*   Updated: 2018/11/14 14:35:28 by amelikia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ typedef struct		s_comm
 	struct s_comm	*next;
 }					t_comm;
 int					ft_list_size(t_list *root);
-t_list				*ft_list_add_back(t_list *list, int data);
-t_list				*ft_list_add_front(t_list *list, int data);
+t_list				*ft_list_add_back(t_list *list, int data, int pos);
+t_list				*ft_list_add_front(t_list *list, int data, int pos);
 void				ft_list_clean(t_list **list);
 t_list				*ft_list_dup(t_list *list);
 t_list				*ft_list_ndup(t_list *list, int size);

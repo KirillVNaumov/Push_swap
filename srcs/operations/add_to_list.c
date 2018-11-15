@@ -6,7 +6,7 @@
 /*   By: amelikia <amelikia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/10 14:31:24 by amelikia          #+#    #+#             */
-/*   Updated: 2018/11/10 14:31:25 by amelikia         ###   ########.fr       */
+/*   Updated: 2018/11/14 14:36:44 by amelikia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		add_to_list(int i, int argc, char **argv, t_list **stack)
 			ft_printf("Error\n");
 			return (0);
 		}
-		*stack = ft_list_add_back((*stack), ft_atoi(argv[i++]));
+		*stack = ft_list_add_back((*stack), ft_atoi(argv[i++]), 0);
 	}
 	return (1);
 }

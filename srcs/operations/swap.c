@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: knaumov <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: knaumov <knaumov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 11:44:45 by knaumov           #+#    #+#             */
-/*   Updated: 2018/11/09 11:44:46 by knaumov          ###   ########.fr       */
+/*   Updated: 2018/11/14 14:32:41 by amelikia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,7 @@ void		swap(t_list **list)
 	tmp = elem1->data;
 	elem1->data = elem2->data;
 	elem2->data = tmp;
+	tmp = elem1->pos;
+	elem1->pos = elem2->pos;
+	elem2->pos = tmp;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: knaumov <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: knaumov <knaumov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 11:43:47 by knaumov           #+#    #+#             */
-/*   Updated: 2018/11/09 11:44:12 by knaumov          ###   ########.fr       */
+/*   Updated: 2018/11/14 14:33:04 by amelikia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@ void		push(t_list **src, t_list **dst)
 	if (ft_list_size(*src) < 1)
 		return ;
 	tmp = *src;
-	*dst = ft_list_add_front(*dst, tmp->data);
+	*dst = ft_list_add_front(*dst, tmp->data, tmp->pos);
 	ft_list_remove_front(src);
 }

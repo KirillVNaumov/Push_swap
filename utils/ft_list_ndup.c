@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_list_ndup.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: knaumov <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: knaumov <knaumov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 11:40:09 by knaumov           #+#    #+#             */
-/*   Updated: 2018/11/09 11:40:10 by knaumov          ###   ########.fr       */
+/*   Updated: 2018/11/14 14:36:19 by amelikia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_list		*ft_list_ndup(t_list *list, int size)
 	tmp = list;
 	while (tmp && size > 0)
 	{
-		new = ft_list_add_back(new, tmp->data);
+		new = ft_list_add_back(new, tmp->data, tmp->pos);
 		tmp = tmp->next;
 		--size;
 	}
