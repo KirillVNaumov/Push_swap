@@ -6,7 +6,7 @@
 /*   By: amelikia <amelikia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/13 14:48:54 by amelikia          #+#    #+#             */
-/*   Updated: 2018/11/15 14:11:36 by amelikia         ###   ########.fr       */
+/*   Updated: 2018/11/15 14:28:06 by amelikia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,13 +117,11 @@ void	push_b_while(t_list **stack_a, t_list **stack_b,
 	{
 		push(stack_a, stack_b);
 		*commands = ft_comm_add_back((*commands), "pb");
-		first_two(stack_a, stack_b, commands);
 	}
 	if ((*stack_a)->pos == last_sorted + 1)
 	{
 		push(stack_a, stack_b);
 		*commands = ft_comm_add_back((*commands), "pb");
-		first_two(stack_a, stack_b, commands);
 	}
 }
 
