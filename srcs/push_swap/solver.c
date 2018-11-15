@@ -6,7 +6,7 @@
 /*   By: amelikia <amelikia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/13 14:48:54 by amelikia          #+#    #+#             */
-/*   Updated: 2018/11/15 14:28:06 by amelikia         ###   ########.fr       */
+/*   Updated: 2018/11/15 14:41:06 by amelikia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,11 +188,28 @@ int		push_back(t_list **stack_a, t_list **stack_b,
 void	rotate_back(t_list **stack_a,
 	t_comm **commands, int num)
 {
-	while (num > 0)
+	int list_a_size;
+	int	where_is_one;
+
+	where_is_one = find_in_list((*stack_a), 1);
+	list_a_size = ft_list_size(*stack_a);
+	if (where_is_one < list_a_size / 2)
 	{
-		rotate(stack_a);
-		*commands = ft_comm_add_back((*commands), "ra");
-		num--;
+		while (num > 0)
+		{
+			rotate(stack_a);
+			*commands = ft_comm_add_back((*commands), "ra");
+			num--;
+		}
+	}
+	else
+	{
+		while (num < list_a_size)
+		{
+			reverse_rotate(stack_a);
+			*commands = ft_comm_add_back((*commands), "rra");
+			num++;
+		}
 	}
 }
 
