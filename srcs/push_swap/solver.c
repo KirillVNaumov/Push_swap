@@ -6,7 +6,7 @@
 /*   By: amelikia <amelikia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/13 14:48:54 by amelikia          #+#    #+#             */
-/*   Updated: 2018/11/14 20:29:30 by amelikia         ###   ########.fr       */
+/*   Updated: 2018/11/14 21:06:22 by amelikia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,10 +93,12 @@ int		push_while(t_list **stack_a, t_list **stack_b, t_comm **commands)
 			return (ret);
 		}
 		rotate(stack_a);
+		*commands = ft_comm_add_back((*commands), "ra");
 		first_two(stack_a, stack_b, commands);
 	}
 	ret = (*stack_a)->pos;
 	rotate(stack_a);
+	*commands = ft_comm_add_back((*commands), "ra");
 	return (ret);
 }
 
@@ -170,6 +172,7 @@ int		push_back(t_list **stack_a, t_list **stack_b,
 				*commands = ft_comm_add_back((*commands), "rb");
 			}
 		push(stack_b, stack_a);
+		*commands = ft_comm_add_back((*commands), "pa");
 		end_sorted--;
 	}
 	return (ret - 1);
@@ -189,7 +192,6 @@ void	rotate_back(t_list **stack_a,
 int		solver(t_list *stack_a, t_list *stack_b, t_comm **commands)
 {
 	int	last_sorted;
-	t_list *tmp = stack_a;
 
 	stack_a = list_assign_pos(stack_a);
 	first_two(&stack_a, &stack_b, commands);
@@ -197,19 +199,11 @@ int		solver(t_list *stack_a, t_list *stack_b, t_comm **commands)
 	push_b_while(&stack_a, &stack_b, commands, last_sorted);
 	last_sorted = push_back(&stack_a, &stack_b, commands, last_sorted);
 	rotate_back(&stack_a, commands, last_sorted);
-	tmp = stack_a;
-	while (tmp)
-	{
-		ft_printf("%d--%d\n", tmp->data, tmp->pos);
-		tmp = tmp->next;
-	}
-	ft_printf("------------\n");
 	while (*commands)
 	{
 		ft_printf("%s\n", (*commands)->command);
 		*commands = (*commands)->next;
 	}
-	ft_printf("------------\n");
 	if (check_answer(stack_a, stack_b) == 1)
 		return (1);
 	return (0);
