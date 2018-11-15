@@ -6,7 +6,7 @@
 /*   By: amelikia <amelikia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/13 14:48:54 by amelikia          #+#    #+#             */
-/*   Updated: 2018/11/14 21:06:22 by amelikia         ###   ########.fr       */
+/*   Updated: 2018/11/15 14:11:36 by amelikia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,18 +83,21 @@ int		push_while(t_list **stack_a, t_list **stack_b, t_comm **commands)
 			*commands = ft_comm_add_back((*commands), "ra");
 		}
 	}
-	while ((*stack_a)->pos - (*stack_a)->next->pos == -1)
+	if (ft_list_size(*stack_a) > 2)
 	{
-		if (check_answer(*stack_a, *stack_b) == 1)
+		while ((*stack_a)->pos - (*stack_a)->next->pos == -1)
 		{
-			reverse_rotate(stack_a);
-			ret = (*stack_a)->pos;
+			if (check_answer(*stack_a, *stack_b) == 1)
+			{
+				reverse_rotate(stack_a);
+				ret = (*stack_a)->pos;
+				rotate(stack_a);
+				return (ret);
+			}
 			rotate(stack_a);
-			return (ret);
+			*commands = ft_comm_add_back((*commands), "ra");
+			first_two(stack_a, stack_b, commands);
 		}
-		rotate(stack_a);
-		*commands = ft_comm_add_back((*commands), "ra");
-		first_two(stack_a, stack_b, commands);
 	}
 	ret = (*stack_a)->pos;
 	rotate(stack_a);
@@ -110,7 +113,13 @@ void	push_b_while(t_list **stack_a, t_list **stack_b,
 	tmp = ft_list_dup(*stack_a);
 	if (ft_list_size(tmp) < last_sorted + 1)
 		return ;
-	while ((*stack_a)->pos != last_sorted)
+	while ((*stack_a)->pos != last_sorted + 1)
+	{
+		push(stack_a, stack_b);
+		*commands = ft_comm_add_back((*commands), "pb");
+		first_two(stack_a, stack_b, commands);
+	}
+	if ((*stack_a)->pos == last_sorted + 1)
 	{
 		push(stack_a, stack_b);
 		*commands = ft_comm_add_back((*commands), "pb");
@@ -189,22 +198,16 @@ void	rotate_back(t_list **stack_a,
 	}
 }
 
-int		solver(t_list *stack_a, t_list *stack_b, t_comm **commands)
+int		solver(t_list **stack_a, t_list **stack_b, t_comm **commands)
 {
 	int	last_sorted;
 
-	stack_a = list_assign_pos(stack_a);
-	first_two(&stack_a, &stack_b, commands);
-	last_sorted = push_while(&stack_a, &stack_b, commands);
-	push_b_while(&stack_a, &stack_b, commands, last_sorted);
-	last_sorted = push_back(&stack_a, &stack_b, commands, last_sorted);
-	rotate_back(&stack_a, commands, last_sorted);
-	while (*commands)
-	{
-		ft_printf("%s\n", (*commands)->command);
-		*commands = (*commands)->next;
-	}
-	if (check_answer(stack_a, stack_b) == 1)
+	first_two(stack_a, stack_b, commands);
+	last_sorted = push_while(stack_a, stack_b, commands);
+	push_b_while(stack_a, stack_b, commands, last_sorted);
+	last_sorted = push_back(stack_a, stack_b, commands, last_sorted);
+	rotate_back(stack_a, commands, last_sorted);
+	if (check_answer(*stack_a, *stack_b) == 1)
 		return (1);
 	return (0);
 }
