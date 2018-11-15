@@ -43,5 +43,7 @@ t_list				*list_assign_pos(t_list *stack);
 int					add_to_list(int i, int argc, char **argv, t_list **stack);
 t_comm				*ft_comm_add_front(t_comm *list, char *command);
 t_comm				*ft_comm_add_back(t_comm *list, char *command);
+void				ft_comm_remove_back(t_comm **list);
+int					ft_comm_size(t_comm *root);
 
 #endif
