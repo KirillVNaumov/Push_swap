@@ -6,7 +6,7 @@
 /*   By: amelikia <amelikia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/13 14:48:54 by amelikia          #+#    #+#             */
-/*   Updated: 2018/11/14 19:43:09 by amelikia         ###   ########.fr       */
+/*   Updated: 2018/11/14 20:14:56 by amelikia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,35 +124,34 @@ int		find_the_biggest_sequence(t_list *stack_b, int last_sorted)
 	tmp = stack_b;
 	last_sorted++;
 	end = last_sorted;
-	while (stack_b)
+	while (tmp)
 	{
-		while (tmp)
+		if (tmp->pos == end + 1)
 		{
-			if (last_sorted == stack_b->pos)
-			{
-				last_sorted++;
-				end++;
-			}
-			tmp = tmp->next;
+			++end;
+			tmp = stack_b;
 		}
-		stack_b = stack_b->next;
+		else
+			tmp = tmp->next;
 	}
 	return (end);
 }
 
-void	push_back(t_list **stack_a, t_list **stack_b,
+int		push_back(t_list **stack_a, t_list **stack_b,
 	t_comm **commands, int last_sorted)
 {
-	int list_size;
-	int list_b_pos;
-	int end_sorted;
+	int	list_size;
+	int	list_b_pos;
+	int	end_sorted;
+	int	ret;
 
 	if (!(*stack_b))
-		return ;
+		return (0);
 	list_size = ft_list_size(*stack_b);
 	list_b_pos = find_in_list(*stack_b, last_sorted);
 	first_two(stack_a, stack_b, commands);
 	end_sorted = find_the_biggest_sequence(*stack_b, last_sorted);
+	ret = end_sorted;
 	while (end_sorted > last_sorted)
 	{
 		list_b_pos = find_in_list(*stack_b, end_sorted);
@@ -173,19 +172,31 @@ void	push_back(t_list **stack_a, t_list **stack_b,
 		push(stack_b, stack_a);
 		end_sorted--;
 	}
+	return (ret - 1);
+}
+
+void	rotate_back(t_list **stack_a,
+	t_comm **commands, int num)
+{
+	while (num > 0)
+	{
+		rotate(stack_a);
+		ft_comm_add_back((*commands), "ra");
+		num--;
+	}
 }
 
 int		solver(t_list *stack_a, t_list *stack_b, t_comm *commands)
 {
-	int last_sorted;
+	int	last_sorted;
 	t_list *tmp = stack_a;
 
 	stack_a = list_assign_pos(stack_a);
 	first_two(&stack_a, &stack_b, &commands);
 	last_sorted = push_while(&stack_a, &stack_b, &commands);
-	// ft_printf("ls: %d\n", last_sorted);
 	push_b_while(&stack_a, &stack_b, &commands, last_sorted);
-	push_back(&stack_a, &stack_b, &commands, last_sorted);
+	last_sorted = push_back(&stack_a, &stack_b, &commands, last_sorted);
+	rotate_back(&stack_a, &commands, last_sorted);
 	tmp = stack_a;
 	while (tmp)
 	{
