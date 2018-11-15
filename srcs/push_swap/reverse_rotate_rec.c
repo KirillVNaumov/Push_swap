@@ -2,10 +2,10 @@
 
 int         reverse_rotate_rec(t_list *stack_a, t_list *stack_b, int set_depth, t_comm **command_list)
 {
-	t_list		*temp_a;
-	t_list		*temp_b;
+    t_list      *temp_a;
+    t_list      *temp_b;
 
-	temp_a = ft_list_dup(stack_a);
+    temp_a = ft_list_dup(stack_a);
 	temp_b = ft_list_dup(stack_b);
 	reverse_rotate(&temp_a);
 	reverse_rotate(&temp_b);
