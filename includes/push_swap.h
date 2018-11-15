@@ -26,5 +26,6 @@ int					swap_rec(t_list *stack_a, t_list *stack_b, int set_depth, t_comm **comma
 int					push_rec(t_list *stack_a, t_list *stack_b, int set_depth, t_comm **command_list);
 int					rotate_rec(t_list *stack_a, t_list *stack_b, int set_depth, t_comm **command_list);
 int					reverse_rotate_rec(t_list *stack_a, t_list *stack_b, int set_depth, t_comm **command_list);
+int         		check_last_comm(t_comm *list, char *command);
 
 #endif
