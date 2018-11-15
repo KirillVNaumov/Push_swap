@@ -6,7 +6,7 @@
 /*   By: amelikia <amelikia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/13 14:48:54 by amelikia          #+#    #+#             */
-/*   Updated: 2018/11/14 20:14:56 by amelikia         ###   ########.fr       */
+/*   Updated: 2018/11/14 20:29:30 by amelikia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	first_two(t_list **stack_a, t_list **stack_b, t_comm **commands)
 		{
 			swap(stack_a);
 			swap(stack_b);
-			ft_comm_add_back((*commands), "ss");
+			*commands = ft_comm_add_back((*commands), "ss");
 		}
 	}
 	else
@@ -51,13 +51,13 @@ void	first_two(t_list **stack_a, t_list **stack_b, t_comm **commands)
 			if ((*stack_a)->pos - (*stack_a)->next->pos == 1)
 			{
 				swap(stack_a);
-				ft_comm_add_back((*commands), "sa");
+				*commands = ft_comm_add_back((*commands), "sa");
 			}
 		if (ft_list_size(*stack_b) >= 2)
 			if ((*stack_b)->pos - (*stack_b)->next->pos == -1)
 			{
 				swap(stack_b);
-				ft_comm_add_back((*commands), "sb");
+				*commands = ft_comm_add_back((*commands), "sb");
 			}
 	}
 }
@@ -75,12 +75,12 @@ int		push_while(t_list **stack_a, t_list **stack_b, t_comm **commands)
 		if (where_is_one > list_size / 2)
 		{
 			reverse_rotate(stack_a);
-			ft_comm_add_back((*commands), "rra");
+			*commands = ft_comm_add_back((*commands), "rra");
 		}
 		else
 		{
 			rotate(stack_a);
-			ft_comm_add_back((*commands), "ra");
+			*commands = ft_comm_add_back((*commands), "ra");
 		}
 	}
 	while ((*stack_a)->pos - (*stack_a)->next->pos == -1)
@@ -111,7 +111,7 @@ void	push_b_while(t_list **stack_a, t_list **stack_b,
 	while ((*stack_a)->pos != last_sorted)
 	{
 		push(stack_a, stack_b);
-		ft_comm_add_back((*commands), "pb");
+		*commands = ft_comm_add_back((*commands), "pb");
 		first_two(stack_a, stack_b, commands);
 	}
 }
@@ -160,14 +160,14 @@ int		push_back(t_list **stack_a, t_list **stack_b,
 			while ((*stack_b)->pos != end_sorted)
 			{
 				reverse_rotate(stack_b);
-				ft_comm_add_back((*commands), "rrb");
+				*commands = ft_comm_add_back((*commands), "rrb");
 			}
 		}
 		else
 			while ((*stack_b)->pos != end_sorted)
 			{
 				rotate(stack_b);
-				ft_comm_add_back((*commands), "rb");
+				*commands = ft_comm_add_back((*commands), "rb");
 			}
 		push(stack_b, stack_a);
 		end_sorted--;
@@ -181,27 +181,33 @@ void	rotate_back(t_list **stack_a,
 	while (num > 0)
 	{
 		rotate(stack_a);
-		ft_comm_add_back((*commands), "ra");
+		*commands = ft_comm_add_back((*commands), "ra");
 		num--;
 	}
 }
 
-int		solver(t_list *stack_a, t_list *stack_b, t_comm *commands)
+int		solver(t_list *stack_a, t_list *stack_b, t_comm **commands)
 {
 	int	last_sorted;
 	t_list *tmp = stack_a;
 
 	stack_a = list_assign_pos(stack_a);
-	first_two(&stack_a, &stack_b, &commands);
-	last_sorted = push_while(&stack_a, &stack_b, &commands);
-	push_b_while(&stack_a, &stack_b, &commands, last_sorted);
-	last_sorted = push_back(&stack_a, &stack_b, &commands, last_sorted);
-	rotate_back(&stack_a, &commands, last_sorted);
+	first_two(&stack_a, &stack_b, commands);
+	last_sorted = push_while(&stack_a, &stack_b, commands);
+	push_b_while(&stack_a, &stack_b, commands, last_sorted);
+	last_sorted = push_back(&stack_a, &stack_b, commands, last_sorted);
+	rotate_back(&stack_a, commands, last_sorted);
 	tmp = stack_a;
 	while (tmp)
 	{
 		ft_printf("%d--%d\n", tmp->data, tmp->pos);
 		tmp = tmp->next;
+	}
+	ft_printf("------------\n");
+	while (*commands)
+	{
+		ft_printf("%s\n", (*commands)->command);
+		*commands = (*commands)->next;
 	}
 	ft_printf("------------\n");
 	if (check_answer(stack_a, stack_b) == 1)
