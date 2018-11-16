@@ -6,7 +6,7 @@
 /*   By: amelikia <amelikia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/10 14:42:12 by amelikia          #+#    #+#             */
-/*   Updated: 2018/11/15 13:42:41 by amelikia         ###   ########.fr       */
+/*   Updated: 2018/11/15 16:05:16 by knaumov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int	find_solution(t_list **stack_a, int flag_v, int flag_c)
 	stop = 0;
 	commands = NULL;
 	stack_b = NULL;
-
 	*stack_a = list_assign_pos(*stack_a);
 	while (1)
 	{
