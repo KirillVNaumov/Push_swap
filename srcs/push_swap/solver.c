@@ -6,7 +6,7 @@
 /*   By: amelikia <amelikia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/13 14:48:54 by amelikia          #+#    #+#             */
-/*   Updated: 2018/11/15 15:49:41 by amelikia         ###   ########.fr       */
+/*   Updated: 2018/11/15 18:20:44 by amelikia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,38 +146,44 @@ int		find_the_biggest_sequence(t_list *stack_b, int last_sorted)
 	return (end);
 }
 
+void	if_else_push_back(t_list **stack_b, t_comm **commands,
+	int end_sorted, int list_size)
+{
+	int list_b_pos;
+
+	list_b_pos = find_in_list(*stack_b, end_sorted);
+	if (list_b_pos > list_size / 2)
+	{
+		while ((*stack_b)->pos != end_sorted)
+		{
+			reverse_rotate(stack_b);
+			*commands = ft_comm_add_back((*commands), "rrb");
+		}
+	}
+	else
+		while ((*stack_b)->pos != end_sorted)
+		{
+			rotate(stack_b);
+			*commands = ft_comm_add_back((*commands), "rb");
+		}
+}
+
 int		push_back(t_list **stack_a, t_list **stack_b,
 	t_comm **commands, int last_sorted)
 {
 	int	list_size;
-	int	list_b_pos;
 	int	end_sorted;
 	int	ret;
 
 	if (!(*stack_b))
 		return (0);
 	list_size = ft_list_size(*stack_b);
-	list_b_pos = find_in_list(*stack_b, last_sorted);
 	first_two(stack_a, stack_b, commands);
 	end_sorted = find_the_biggest_sequence(*stack_b, last_sorted);
 	ret = end_sorted;
 	while (end_sorted > last_sorted)
 	{
-		list_b_pos = find_in_list(*stack_b, end_sorted);
-		if (list_b_pos > list_size / 2)
-		{
-			while ((*stack_b)->pos != end_sorted)
-			{
-				reverse_rotate(stack_b);
-				*commands = ft_comm_add_back((*commands), "rrb");
-			}
-		}
-		else
-			while ((*stack_b)->pos != end_sorted)
-			{
-				rotate(stack_b);
-				*commands = ft_comm_add_back((*commands), "rb");
-			}
+		if_else_push_back(stack_b, commands, end_sorted, list_size);
 		push(stack_b, stack_a);
 		*commands = ft_comm_add_back((*commands), "pa");
 		end_sorted--;
