@@ -6,7 +6,7 @@
 #    By: knaumov <knaumov@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/05 15:18:06 by knaumov           #+#    #+#              #
-#    Updated: 2018/11/13 14:44:04 by amelikia         ###   ########.fr        #
+#    Updated: 2018/11/15 16:19:33 by knaumov          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -84,7 +84,7 @@ clean:
 	echo "$(RED)Deleting objects for $(RED_EXTRA)$(LIB_P)$(RESET)"; \
 	/bin/rm -rf $(OBJ); \
 	fi
-	#@make -C libft clean
+	@make -C libft clean
 	@echo "$(BLUE_EXTRA)clean$(BLUE): Complete$(RESET)"
 
 fclean: clean
@@ -92,28 +92,28 @@ fclean: clean
 	echo "$(RED)Deleting $(RED_EXTRA)$(LIB_OPER)$(RESET)"; \
 	/bin/rm -f $(LIB_OPER); \
 	fi
-
+	
 	@if [ -a "$(LIB_C)" ]; then \
 	echo "$(RED)Deleting $(RED_EXTRA)$(LIB_C)$(RESET)"; \
 	/bin/rm -f $(LIB_C); \
 	fi
-
+	
 	@if [ -a "$(LIB_P)" ]; then \
 	echo "$(RED)Deleting $(RED_EXTRA)$(LIB_P)$(RESET)"; \
 	/bin/rm -f $(LIB_P); \
 	fi
-
+	
 	@if [ -a "$(EXEC_C)" ]; then \
 	echo "$(RED)Deleting executable $(RED_EXTRA)$(EXEC_C)$(RESET)"; \
 	/bin/rm -f $(EXEC_C); \
 	fi
-
+	
 	@if [ -a "$(EXEC_P)" ]; then \
 	echo "$(RED)Deleting executable $(RED_EXTRA)$(EXEC_P)$(RESET)"; \
 	/bin/rm -f $(EXEC_P); \
 	fi
-
-	#@make -C libft fclean
+	
+	@make -C libft fclean
 	@echo "$(BLUE_EXTRA)fclean$(BLUE): Complete$(RESET)"
 
 re: fclean all

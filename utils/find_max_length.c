@@ -6,7 +6,7 @@
 /*   By: knaumov <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 11:37:53 by knaumov           #+#    #+#             */
-/*   Updated: 2018/11/09 11:39:30 by knaumov          ###   ########.fr       */
+/*   Updated: 2018/11/15 16:02:35 by knaumov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,15 @@ int			find_max_length(t_list *list)
 			return (11);
 		count = 0;
 		if (tmp < 0)
-		{
-			tmp = -tmp;
 			count = 1;
-		}
+		if (tmp < 0)
+			tmp = -tmp;
 		while (tmp > 9)
 		{
 			tmp = tmp / 10;
 			++count;
 		}
-		++count;
-		if (count > max)
+		if (++count > max)
 			max = count;
 		list = list->next;
 	}
