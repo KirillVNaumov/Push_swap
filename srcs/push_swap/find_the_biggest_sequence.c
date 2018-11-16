@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   solver.c                                           :+:      :+:    :+:   */
+/*   find_the_biggest_sequence.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amelikia <amelikia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/13 14:48:54 by amelikia          #+#    #+#             */
-/*   Updated: 2018/11/15 18:36:53 by amelikia         ###   ########.fr       */
+/*   Created: 2018/11/15 18:35:25 by amelikia          #+#    #+#             */
+/*   Updated: 2018/11/15 18:35:29 by amelikia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		solver(t_list **stack_a, t_list **stack_b, t_comm **commands)
+int		find_the_biggest_sequence(t_list *stack_b, int last_sorted)
 {
-	int	last_sorted;
+	t_list	*tmp;
+	int		end;
 
-	first_two(stack_a, stack_b, commands);
-	last_sorted = push_while(stack_a, stack_b, commands);
-	push_b_while(stack_a, stack_b, commands, last_sorted);
-	last_sorted = push_back(stack_a, stack_b, commands, last_sorted);
-	rotate_back(stack_a, commands, last_sorted);
-	if (check_answer(*stack_a, *stack_b) == 1)
-		return (1);
-	return (0);
+	tmp = stack_b;
+	last_sorted++;
+	end = last_sorted;
+	while (tmp)
+	{
+		if (tmp->pos == end + 1)
+		{
+			++end;
+			tmp = stack_b;
+		}
+		else
+			tmp = tmp->next;
+	}
+	return (end);
 }

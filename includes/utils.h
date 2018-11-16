@@ -6,7 +6,7 @@
 /*   By: knaumov <knaumov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 11:36:45 by knaumov           #+#    #+#             */
-/*   Updated: 2018/11/14 14:35:28 by amelikia         ###   ########.fr       */
+/*   Updated: 2018/11/15 18:30:47 by amelikia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,6 @@ t_comm				*ft_comm_add_front(t_comm *list, char *command);
 t_comm				*ft_comm_add_back(t_comm *list, char *command);
 void				ft_comm_remove_back(t_comm **list);
 int					ft_comm_size(t_comm *root);
+int					find_in_list(t_list *root, int num);
 
 #endif
