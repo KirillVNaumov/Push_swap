@@ -19,7 +19,7 @@ int	color_and_status_check(char **argv, int *flag_c, int *flag_v, int *flag_o)
 
 	j = 0;
 	i = 1;
-	while(j <= 2)
+	while (j <= 2)
 	{
 		if (argv[i] && !ft_strcmp(argv[i], "-v"))
 		{
