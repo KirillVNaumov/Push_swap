@@ -6,13 +6,13 @@
 /*   By: amelikia <amelikia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/10 14:42:12 by amelikia          #+#    #+#             */
-/*   Updated: 2018/11/15 18:38:28 by amelikia         ###   ########.fr       */
+/*   Updated: 2018/11/15 18:53:00 by amelikia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	find_solution(t_list **stack_a, int flag_v, int flag_c)
+int	find_solution(t_list **stack_a)
 {
 	t_list	*stack_b;
 	t_comm	*commands;
@@ -26,8 +26,6 @@ int	find_solution(t_list **stack_a, int flag_v, int flag_c)
 	{
 		if (solver(stack_a, &stack_b, &commands) == 1)
 			stop = 1;
-		if (flag_v == 1)
-			print_status(*stack_a, stack_b, flag_c);
 		if (stop == 1)
 			break ;
 	}

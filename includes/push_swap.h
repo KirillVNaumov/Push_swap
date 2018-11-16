@@ -6,7 +6,7 @@
 /*   By: knaumov <knaumov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/05 15:28:26 by knaumov           #+#    #+#             */
-/*   Updated: 2018/11/15 18:38:17 by amelikia         ###   ########.fr       */
+/*   Updated: 2018/11/15 18:54:09 by amelikia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,8 @@
 
 # include "operations.h"
 
-void				error_push_swap(int flag_optimized,
-	int flag_c, int flag_v, t_list **stack);
-int					find_solution(t_list **stack_a, int flag_v, int flag_c);
+void				error_push_swap(int flag_optimized, t_list **stack);
+int					find_solution(t_list **stack_a);
 void				find_optimal_solution(t_list *stack_a);
 int					check_answer(t_list *stack_a, t_list *stack_b);
 int					solver(t_list **stack_a, t_list **stack_b,

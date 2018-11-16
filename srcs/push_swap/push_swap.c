@@ -6,7 +6,7 @@
 /*   By: amelikia <amelikia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/10 14:38:58 by amelikia          #+#    #+#             */
-/*   Updated: 2018/11/15 16:08:12 by knaumov          ###   ########.fr       */
+/*   Updated: 2018/11/15 18:54:35 by amelikia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,5 @@ int	main(int argc, char **argv)
 		ft_printf("USAGE\n");
 		return (1);
 	}
-	error_push_swap(flag_optimized, flag_c, flag_v, &stack);
+	error_push_swap(flag_optimized, &stack);
 }
