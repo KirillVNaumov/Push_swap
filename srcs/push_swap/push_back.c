@@ -6,7 +6,7 @@
 /*   By: amelikia <amelikia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 18:36:02 by amelikia          #+#    #+#             */
-/*   Updated: 2018/11/15 18:36:04 by amelikia         ###   ########.fr       */
+/*   Updated: 2018/11/16 16:31:51 by amelikia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,14 @@ int		push_back(t_list **stack_a, t_list **stack_b,
 	list_size = ft_list_size(*stack_b);
 	first_two(stack_a, stack_b, commands);
 	end_sorted = find_the_biggest_sequence(*stack_b, last_sorted);
-	ret = end_sorted;
+	ret = 0;
 	while (end_sorted > last_sorted)
 	{
 		if_else_push_back(stack_b, commands, end_sorted, list_size);
 		push(stack_b, stack_a);
 		*commands = ft_comm_add_back((*commands), "pa");
+		ret++;
 		end_sorted--;
 	}
-	return (ret - 1);
+	return (ret);
 }

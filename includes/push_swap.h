@@ -6,7 +6,7 @@
 /*   By: knaumov <knaumov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/05 15:28:26 by knaumov           #+#    #+#             */
-/*   Updated: 2018/11/15 18:54:09 by amelikia         ###   ########.fr       */
+/*   Updated: 2018/11/16 16:58:06 by amelikia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int					find_solution(t_list **stack_a);
 void				find_optimal_solution(t_list *stack_a);
 int					check_answer(t_list *stack_a, t_list *stack_b);
 int					solver(t_list **stack_a, t_list **stack_b,
-	t_comm **commands);
+	t_comm **commands, int end);
 int					search(t_list *stack_a, t_list *stack_b,
 	int set_depth, t_comm **command_list);
 int					swap_rec(t_list *stack_a, t_list *stack_b,
