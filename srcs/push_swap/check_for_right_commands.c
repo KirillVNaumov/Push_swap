@@ -6,7 +6,7 @@
 /*   By: amelikia <amelikia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 18:38:08 by amelikia          #+#    #+#             */
-/*   Updated: 2018/11/15 18:38:08 by amelikia         ###   ########.fr       */
+/*   Updated: 2018/11/16 18:39:51 by amelikia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int	check_for_right_commnds(t_comm *commands)
 {
+	if (!commands->next)
+		return (1);
 	while (commands->next)
 	{
 		if ((!ft_strcmp(commands->command, "ra") &&

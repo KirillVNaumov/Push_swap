@@ -6,7 +6,7 @@
 /*   By: amelikia <amelikia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 15:27:01 by amelikia          #+#    #+#             */
-/*   Updated: 2018/11/15 18:49:14 by amelikia         ###   ########.fr       */
+/*   Updated: 2018/11/16 18:40:38 by amelikia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ t_comm	*optimize_answer(t_comm *commands)
 	t_comm	*word;
 
 	word = NULL;
+	if (!commands->next)
+		return (commands);
 	while (commands->next)
 	{
 		if (check_if(commands->command, commands->next->command) == 1)
