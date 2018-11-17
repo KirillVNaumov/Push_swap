@@ -6,7 +6,7 @@
 /*   By: amelikia <amelikia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/10 14:42:12 by amelikia          #+#    #+#             */
-/*   Updated: 2018/11/16 18:40:46 by amelikia         ###   ########.fr       */
+/*   Updated: 2018/11/16 19:41:48 by amelikia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ int	find_solution(t_list **stack_a)
 	while (1)
 		if (solver(stack_a, &stack_b, &commands, end) == 1)
 			break ;
+	if (!commands)
+		return (0);
 	while (check_for_right_commnds(commands) == 0)
 		commands = optimize_answer(commands);
 	while (commands)
