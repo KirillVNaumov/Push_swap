@@ -8,7 +8,7 @@ void	ft_comm_clean(t_comm **comm)
 		return ;
 	node = *comm;
 	if (node->next)
-		ft_list_clean(&node->next);
+		ft_comm_clean(&node->next);
 	free((*comm)->command);
     free(*comm);
 }
