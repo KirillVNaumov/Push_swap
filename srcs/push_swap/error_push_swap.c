@@ -6,7 +6,7 @@
 /*   By: amelikia <amelikia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/10 14:39:13 by amelikia          #+#    #+#             */
-/*   Updated: 2018/11/15 18:53:48 by amelikia         ###   ########.fr       */
+/*   Updated: 2018/11/19 13:12:18 by amelikia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,11 @@ void	error_push_swap(int flag_optimized, t_list **stack)
 		ft_printf("Error\n");
 		return ;
 	}
-	if (flag_optimized == 0)
+	if (check_for_duplicates(*stack) == -1)
 	{
-		if (check_for_duplicates(*stack) == -1)
-		{
-			ft_printf("Error\n");
-			return ;
-		}
-		find_solution(stack);
+		ft_printf("Error\n");
+		return ;
 	}
-	else
-		find_optimal_solution(*stack);
+	if (find_optimal_solution(*stack, flag_optimized) == 0)
+		find_solution(stack);
 }

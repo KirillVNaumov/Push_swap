@@ -6,7 +6,7 @@
 /*   By: knaumov <knaumov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/05 15:28:26 by knaumov           #+#    #+#             */
-/*   Updated: 2018/11/16 16:58:06 by amelikia         ###   ########.fr       */
+/*   Updated: 2018/11/19 13:19:44 by amelikia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 void				error_push_swap(int flag_optimized, t_list **stack);
 int					find_solution(t_list **stack_a);
-void				find_optimal_solution(t_list *stack_a);
+int					find_optimal_solution(t_list *stack_a, int flag_optimized);
 int					check_answer(t_list *stack_a, t_list *stack_b);
 int					solver(t_list **stack_a, t_list **stack_b,
 	t_comm **commands, int end);
@@ -45,5 +45,9 @@ int					push_back(t_list **stack_a, t_list **stack_b,
 void				rotate_back(t_list **stack_a,
 	t_comm **commands, int num);
 int					check_for_right_commnds(t_comm *commands);
+int					check_if(char *s1, char *s2);
+int					check_if_2(char *s1, char *s2);
+int					check_if_3(char *s1, char *s2);
+void				if_check_if(t_comm **commands);
 
 #endif
