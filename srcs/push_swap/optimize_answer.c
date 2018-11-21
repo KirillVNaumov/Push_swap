@@ -6,7 +6,7 @@
 /*   By: amelikia <amelikia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 15:27:01 by amelikia          #+#    #+#             */
-/*   Updated: 2018/11/20 18:48:35 by amelikia         ###   ########.fr       */
+/*   Updated: 2018/11/20 20:08:52 by amelikia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 t_comm	*optimize_answer(t_comm *commands)
 {
 	t_comm	*word;
+	t_comm	*tmp;
 
+	tmp = commands;
 	word = NULL;
 	if (!commands->next)
 		return (commands);
@@ -32,6 +34,6 @@ t_comm	*optimize_answer(t_comm *commands)
 	}
 	if (commands)
 		word = ft_comm_add_back(word, commands->command);
-	ft_comm_clean(&commands);
+	ft_comm_clean(&tmp);
 	return (word);
 }
