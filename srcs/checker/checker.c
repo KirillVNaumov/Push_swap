@@ -6,11 +6,22 @@
 /*   By: knaumov <knaumov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 11:48:27 by knaumov           #+#    #+#             */
-/*   Updated: 2018/11/10 14:37:32 by amelikia         ###   ########.fr       */
+/*   Updated: 2018/11/20 21:25:17 by amelikia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
+
+int		so_tired(t_list **stack, int flag_o)
+{
+	if (flag_o == 1)
+	{
+		ft_printf("Error\n");
+		ft_list_clean(stack);
+		return (0);
+	}
+	return (1);
+}
 
 int		main(int argc, char **argv)
 {
@@ -28,13 +39,13 @@ int		main(int argc, char **argv)
 	{
 		i = color_and_status_check(argv, &flag_c, &flag_v, &flag_o);
 		if (add_to_list(i, argc, argv, &stack) == 0)
+		{
+			ft_list_clean(&stack);
 			return (0);
+		}
 	}
-	stack = list_assign_pos(stack);
-	if (flag_o == 1)
-	{
-		ft_printf("Error\n");
+	if (so_tired(&stack, flag_o) == 0)
 		return (0);
-	}
 	error_checker(argc, flag_c, flag_v, &stack);
+	ft_list_clean(&stack);
 }

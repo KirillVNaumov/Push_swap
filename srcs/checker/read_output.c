@@ -6,7 +6,7 @@
 /*   By: knaumov <knaumov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 11:49:21 by knaumov           #+#    #+#             */
-/*   Updated: 2018/11/10 14:22:13 by amelikia         ###   ########.fr       */
+/*   Updated: 2018/11/20 21:01:42 by amelikia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,13 @@ int		check_input(char *input)
 	return (-1);
 }
 
+void	norminette_is_bitch_again(t_list **stack_a, t_list **stack_b,
+	int flag_v, int flag_c)
+{
+	if (flag_v == 1)
+		print_status(*stack_a, *stack_b, flag_c);
+}
+
 int		read_output(t_list **stack_a, int flag_v, int flag_c)
 {
 	t_list		*stack_b;
@@ -80,11 +87,14 @@ int		read_output(t_list **stack_a, int flag_v, int flag_c)
 		else if (!ft_strcmp(input, "exit"))
 			break ;
 		else
+		{
+			ft_strdel(&input);
 			return (-1);
-		if (flag_v == 1)
-			print_status(*stack_a, stack_b, flag_c);
+		}
+		norminette_is_bitch_again(stack_a, &stack_b, flag_v, flag_c);
 		ft_strdel(&input);
 	}
 	check_result(stack_a, stack_b);
+	ft_strdel(&input);
 	return (0);
 }
