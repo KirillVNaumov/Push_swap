@@ -6,7 +6,7 @@
 /*   By: knaumov <knaumov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/05 15:28:26 by knaumov           #+#    #+#             */
-/*   Updated: 2018/11/19 13:19:44 by amelikia         ###   ########.fr       */
+/*   Updated: 2018/11/20 20:51:30 by knaumov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,7 @@ int					check_if(char *s1, char *s2);
 int					check_if_2(char *s1, char *s2);
 int					check_if_3(char *s1, char *s2);
 void				if_check_if(t_comm **commands);
+void				fix_double_rotations(char *s1, char *s2, \
+	t_comm **commands, t_comm **new);
 
 #endif

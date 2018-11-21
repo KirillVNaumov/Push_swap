@@ -25,7 +25,7 @@ int	find_optimal_solution(t_list *stack_a, int flag_optimized)
 	while (search(stack_a, stack_b, set_depth, &command_list) == -1)
 	{
 		set_depth++;
-		if (flag_optimized == 0 && set_depth == 9)
+		if (flag_optimized == 0 && set_depth == 8)
 			return (0);
 		command_list = NULL;
 		stack_b = NULL;
