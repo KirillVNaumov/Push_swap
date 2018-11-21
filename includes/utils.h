@@ -6,7 +6,7 @@
 /*   By: knaumov <knaumov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 11:36:45 by knaumov           #+#    #+#             */
-/*   Updated: 2018/11/19 15:44:13 by amelikia         ###   ########.fr       */
+/*   Updated: 2018/11/21 13:23:59 by knaumov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,14 @@ void				ft_comm_remove_back(t_comm **list);
 int					ft_comm_size(t_comm *root);
 int					find_in_list(t_list *root, int num);
 void				ft_comm_clean(t_comm **comm);
-int		    if_str_split(char **argv, t_list **stack, int *i);
-int			add_to_list(int i, char **argv, t_list **stack);
-int			color_and_status_check(char **argv,
-	int *flag_c, int *flag_v, int *flag_o);
-void		print_status(t_list *stack_a, t_list *stack_b, int color);
-int			check_for_integer(char *str);
-int			check_for_number(char *str);
-int			check_for_duplicates(t_list *stack_a);
-void		ft_list_clean_two(t_list **a, t_list **b);
+int					if_str_split(char **argv, t_list **stack, int *i);
+int					add_to_list(int i, char **argv, t_list **stack);
+int					color_and_status_check(char **argv,
+			int *flag_c, int *flag_v, int *flag_o);
+void				print_status(t_list *stack_a, t_list *stack_b, int color);
+int					check_for_integer(char *str);
+int					check_for_number(char *str);
+int					check_for_duplicates(t_list *stack_a);
+void				ft_list_clean_two(t_list **a, t_list **b);
 
 #endif
