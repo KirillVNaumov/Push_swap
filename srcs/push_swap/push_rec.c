@@ -6,7 +6,7 @@
 /*   By: knaumov <knaumov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 16:05:42 by knaumov           #+#    #+#             */
-/*   Updated: 2018/11/15 16:37:20 by amelikia         ###   ########.fr       */
+/*   Updated: 2018/11/19 15:37:20 by amelikia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,19 @@ int			push_rec(t_list *stack_a, t_list *stack_b, int set_depth, \
 	temp_b = ft_list_dup(stack_b);
 	push(&temp_b, &temp_a);
 	if (push_rec_pa(temp_a, temp_b, set_depth, command_list) == 1)
+	{
+		ft_list_clean_two(&temp_a, &temp_b);
 		return (1);
+	}
+	ft_list_clean_two(&temp_a, &temp_b);
 	temp_a = ft_list_dup(stack_a);
 	temp_b = ft_list_dup(stack_b);
 	push(&temp_a, &temp_b);
 	if (push_rec_pb(temp_a, temp_b, set_depth, command_list) == 1)
+	{
+		ft_list_clean_two(&temp_a, &temp_b);
 		return (1);
+	}
+	ft_list_clean_two(&temp_a, &temp_b);
 	return (-1);
 }

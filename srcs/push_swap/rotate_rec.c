@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate_rec.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: knaumov <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: knaumov <knaumov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 16:11:04 by knaumov           #+#    #+#             */
-/*   Updated: 2018/11/15 16:13:55 by knaumov          ###   ########.fr       */
+/*   Updated: 2018/11/19 15:38:08 by amelikia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,20 @@ int			rotate_rec(t_list *stack_a, t_list *stack_b, int set_depth, \
 	rotate(&temp_a);
 	rotate(&temp_b);
 	if (rotate_rec_ra(temp_a, stack_b, set_depth, command_list) == 1)
+	{
+		ft_list_clean_two(&temp_a, &temp_b);
 		return (1);
+	}
 	if (rotate_rec_rb(stack_a, temp_b, set_depth, command_list) == 1)
+	{
+		ft_list_clean_two(&temp_a, &temp_b);
 		return (1);
+	}
 	if (rotate_rec_rr(temp_a, temp_b, set_depth, command_list) == 1)
+	{
+		ft_list_clean_two(&temp_a, &temp_b);
 		return (1);
+	}
+	ft_list_clean_two(&temp_a, &temp_b);
 	return (-1);
 }

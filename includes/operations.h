@@ -6,7 +6,7 @@
 /*   By: knaumov <knaumov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/05 15:38:22 by knaumov           #+#    #+#             */
-/*   Updated: 2018/11/14 14:37:37 by amelikia         ###   ########.fr       */
+/*   Updated: 2018/11/19 15:36:39 by amelikia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,6 @@ int			color_and_status_check(char **argv,
 int			check_for_integer(char *str);
 int			check_for_number(char *str);
 int			check_for_duplicates(t_list *stack_a);
+void		ft_list_clean_two(t_list **a, t_list **b);
 
 #endif

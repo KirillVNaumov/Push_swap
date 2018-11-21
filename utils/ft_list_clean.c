@@ -21,5 +21,5 @@ void	ft_list_clean(t_list **list)
 	node = *list;
 	if (node->next)
 		ft_list_clean(&node->next);
-	free(*list);
+	ft_memdel((void**)list);
 }

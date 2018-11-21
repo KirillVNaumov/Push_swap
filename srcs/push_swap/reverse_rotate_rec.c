@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reverse_rotate_rec.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: knaumov <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: knaumov <knaumov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 16:08:30 by knaumov           #+#    #+#             */
-/*   Updated: 2018/11/15 16:10:46 by knaumov          ###   ########.fr       */
+/*   Updated: 2018/11/19 15:39:05 by amelikia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,20 @@ int			reverse_rotate_rec(t_list *stack_a, t_list *stack_b, \
 	reverse_rotate(&temp_a);
 	reverse_rotate(&temp_b);
 	if (reverse_rotate_rec_rra(temp_a, stack_b, set_depth, command_list) == 1)
+	{
+		ft_list_clean_two(&temp_a, &temp_b);
 		return (1);
+	}
 	if (reverse_rotate_rec_rrb(stack_a, temp_b, set_depth, command_list) == 1)
+	{
+		ft_list_clean_two(&temp_a, &temp_b);
 		return (1);
+	}
 	if (reverse_rotate_rec_rrr(temp_a, temp_b, set_depth, command_list) == 1)
+	{
+		ft_list_clean_two(&temp_a, &temp_b);
 		return (1);
+	}
+	ft_list_clean_two(&temp_a, &temp_b);
 	return (-1);
 }

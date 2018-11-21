@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap_rec.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: knaumov <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: knaumov <knaumov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 16:16:01 by knaumov           #+#    #+#             */
-/*   Updated: 2018/11/15 16:18:10 by knaumov          ###   ########.fr       */
+/*   Updated: 2018/11/19 15:38:43 by amelikia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,20 @@ int			swap_rec(t_list *stack_a, t_list *stack_b, int set_depth, \
 	swap(&temp_a);
 	swap(&temp_b);
 	if (swap_rec_sa(temp_a, stack_b, set_depth, command_list) == 1)
+	{
+		ft_list_clean_two(&temp_a, &temp_b);
 		return (1);
+	}
 	if (swap_rec_sb(stack_a, temp_b, set_depth, command_list) == 1)
+	{
+		ft_list_clean_two(&temp_a, &temp_b);
 		return (1);
+	}
 	if (swap_rec_ss(temp_a, temp_b, set_depth, command_list) == 1)
+	{
+		ft_list_clean_two(&temp_a, &temp_b);
 		return (1);
+	}
+	ft_list_clean_two(&temp_a, &temp_b);
 	return (-1);
 }
