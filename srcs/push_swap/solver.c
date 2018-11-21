@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   solver.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amelikia <amelikia@student.42.fr>          +#+  +:+       +#+        */
+/*   By: knaumov <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/13 14:48:54 by amelikia          #+#    #+#             */
-/*   Updated: 2018/11/19 15:55:19 by amelikia         ###   ########.fr       */
+/*   Created: 2018/11/21 11:49:56 by knaumov           #+#    #+#             */
+/*   Updated: 2018/11/21 11:49:57 by knaumov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int		check_stack_b(t_list *stack_b, int last_sorted)
 	return (last_sorted);
 }
 
-void	just_because_norminette_is_bitch(t_list **stack_a, t_list **stack_b,
+void	find_last_sorted(t_list **stack_a, t_list **stack_b,
 	t_comm **commands, int *last_sorted)
 {
 	first_two(stack_a, stack_b, commands);
@@ -52,7 +52,7 @@ int		solver(t_list **stack_a, t_list **stack_b, t_comm **commands, int end)
 	i = 0;
 	if (check_answer(*stack_a, *stack_b) == 1)
 		return (1);
-	just_because_norminette_is_bitch(stack_a, stack_b, commands, &last_sorted);
+	find_last_sorted(stack_a, stack_b, commands, &last_sorted);
 	if (check_answer(*stack_a, *stack_b) == 1)
 		return (1);
 	while (check_stack_a(*stack_a, last_sorted) != 1)

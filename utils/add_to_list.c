@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   add_to_list.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amelikia <amelikia@student.42.fr>          +#+  +:+       +#+        */
+/*   By: knaumov <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/10 14:31:24 by amelikia          #+#    #+#             */
-/*   Updated: 2018/11/14 14:36:44 by amelikia         ###   ########.fr       */
+/*   Created: 2018/11/21 11:46:11 by knaumov           #+#    #+#             */
+/*   Updated: 2018/11/21 11:46:12 by knaumov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "operations.h"
+#include "utils.h"
 
-int		add_to_list(int i, int argc, char **argv, t_list **stack)
+int		add_to_list(int i, char **argv, t_list **stack)
 {
 	if (!argv[i])
 	{
 		ft_printf("Error\n");
 		return (0);
 	}
-	while (i < argc)
+	while (argv[i])
 	{
 		if (check_for_number(argv[i]) == -1 || check_for_integer(argv[i]) == -1)
 		{

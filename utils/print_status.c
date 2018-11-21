@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "operations.h"
+#include "utils.h"
 
 void	print_stack_a(t_list **stack_a, int printed_rows, int heigth, int color)
 {

@@ -1,30 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_for_number.c                                 :+:      :+:    :+:   */
+/*   check_for_duplicates.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: knaumov <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/09 11:47:16 by knaumov           #+#    #+#             */
-/*   Updated: 2018/11/09 11:48:01 by knaumov          ###   ########.fr       */
+/*   Created: 2018/11/09 11:45:38 by knaumov           #+#    #+#             */
+/*   Updated: 2018/11/09 11:46:49 by knaumov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "operations.h"
+#include "utils.h"
 
-int		check_for_number(char *str)
+int			check_for_duplicates(t_list *stack)
 {
-	int	i;
+	t_list	*tmp;
+	int		count;
 
-	i = 0;
-	if (str[0] == '-')
-		i++;
-	while (str[i])
+	while (stack)
 	{
-		if (str[i] >= '0' && str[i] <= '9')
-			i++;
-		else
-			return (-1);
+		count = 0;
+		tmp = stack;
+		while (tmp)
+		{
+			if (stack->data == tmp->data)
+			{
+				count++;
+				if (count > 1)
+					return (-1);
+			}
+			tmp = tmp->next;
+		}
+		stack = stack->next;
 	}
 	return (0);
 }

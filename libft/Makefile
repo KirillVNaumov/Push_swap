@@ -219,7 +219,7 @@ all: $(NAME)
 
 $(NAME):
 	@echo "$(GREEN_EXTRA)   Libft: $(GREEN)Making objects for $(GREEN_EXTRA)libft.a$(RESET)"
-	@gcc -Wall -Wextra -Werror -c $(FILES) -g
+	@gcc -Wall -Wextra -Werror -c $(FILES)
 	@echo "$(GREEN_EXTRA)   Libft: $(GREEN)Compiling $(GREEN_EXTRA)libft.a$(RESET)"
 	@ar rc $(NAME) $(OBJ)
 	@ranlib $(NAME)

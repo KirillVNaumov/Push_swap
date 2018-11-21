@@ -63,7 +63,7 @@ int		check_input(char *input)
 	return (-1);
 }
 
-void	norminette_is_bitch_again(t_list **stack_a, t_list **stack_b,
+void	flag_v_check(t_list **stack_a, t_list **stack_b,
 	int flag_v, int flag_c)
 {
 	if (flag_v == 1)
@@ -91,7 +91,7 @@ int		read_output(t_list **stack_a, int flag_v, int flag_c)
 			ft_strdel(&input);
 			return (-1);
 		}
-		norminette_is_bitch_again(stack_a, &stack_b, flag_v, flag_c);
+		flag_v_check(stack_a, &stack_b, flag_v, flag_c);
 		ft_strdel(&input);
 	}
 	check_result(stack_a, stack_b);

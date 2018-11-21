@@ -19,6 +19,8 @@ int	find_optimal_solution(t_list *stack_a, int flag_optimized)
 	t_comm		*tmp;
 	t_list		*stack_b;
 
+	if (flag_optimized == 0 && ft_list_size(stack_a) > 10)
+		return (0);
 	set_depth = 1;
 	command_list = NULL;
 	stack_b = NULL;
@@ -28,7 +30,6 @@ int	find_optimal_solution(t_list *stack_a, int flag_optimized)
 		if (flag_optimized == 0 && set_depth == 8)
 			return (0);
 		command_list = NULL;
-		stack_b = NULL;
 	}
 	tmp = command_list;
 	while (command_list)

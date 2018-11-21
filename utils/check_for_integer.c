@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   find_the_biggest_sequence.c                        :+:      :+:    :+:   */
+/*   check_for_integer.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: knaumov <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/21 11:48:10 by knaumov           #+#    #+#             */
-/*   Updated: 2018/11/21 11:48:12 by knaumov          ###   ########.fr       */
+/*   Created: 2018/11/09 11:47:00 by knaumov           #+#    #+#             */
+/*   Updated: 2018/11/09 11:47:04 by knaumov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "utils.h"
 
-int		find_the_biggest_sequence(t_list *stack_b, int last_sorted)
+int		check_for_integer(char *str)
 {
-	t_list	*tmp;
-	int		end;
-
-	tmp = stack_b;
-	last_sorted++;
-	end = last_sorted;
-	while (tmp)
-	{
-		if (tmp->pos == end + 1)
-		{
-			++end;
-			tmp = stack_b;
-		}
-		else
-			tmp = tmp->next;
-	}
-	return (end);
+	if (str[0] == '-')
+		if (ft_strlen(str) > 11)
+			return (-1);
+	if (str[0] != '-')
+		if (ft_strlen(str) > 10)
+			return (-1);
+	if (str[0] == '-' && ft_strlen(str) == 11)
+		if (ft_strcmp(str, "-2147483648") > 0)
+			return (-1);
+	if (str[0] != '-' && ft_strlen(str) == 10)
+		if (ft_strcmp(str, "2147483647") > 0)
+			return (-1);
+	return (0);
 }

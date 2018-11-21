@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amelikia <amelikia@student.42.fr>          +#+  +:+       +#+        */
+/*   By: knaumov <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/10 14:38:58 by amelikia          #+#    #+#             */
-/*   Updated: 2018/11/20 21:22:07 by amelikia         ###   ########.fr       */
+/*   Created: 2018/11/21 11:49:14 by knaumov           #+#    #+#             */
+/*   Updated: 2018/11/21 11:49:15 by knaumov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(int argc, char **argv)
 	if (argc >= 2)
 	{
 		i = color_and_status_check(argv, 0, 0, &flag_optimized);
-		if (add_to_list(i, argc, argv, &stack) == 0)
+		if (if_str_split(argv, &stack, &i) == 0)
 			return (0);
 	}
 	else

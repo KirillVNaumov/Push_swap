@@ -1,37 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_for_duplicates.c                             :+:      :+:    :+:   */
+/*   color_and_status_check.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: knaumov <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/09 11:45:38 by knaumov           #+#    #+#             */
-/*   Updated: 2018/11/09 11:46:49 by knaumov          ###   ########.fr       */
+/*   Created: 2018/11/21 11:46:24 by knaumov           #+#    #+#             */
+/*   Updated: 2018/11/21 11:46:25 by knaumov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "operations.h"
+#include "utils.h"
 
-int			check_for_duplicates(t_list *stack)
+int	color_and_status_check(char **argv, int *flag_c, int *flag_v, int *flag_o)
 {
-	t_list	*tmp;
-	int		count;
+	int j;
+	int	i;
 
-	while (stack)
+	j = 0;
+	i = 1;
+	while (j <= 2)
 	{
-		count = 0;
-		tmp = stack;
-		while (tmp)
+		if (argv[i] && !ft_strcmp(argv[i], "-v"))
 		{
-			if (stack->data == tmp->data)
-			{
-				count++;
-				if (count > 1)
-					return (-1);
-			}
-			tmp = tmp->next;
+			*flag_v = 1;
+			i++;
 		}
-		stack = stack->next;
+		if (argv[i] && !ft_strcmp(argv[i], "-c"))
+		{
+			*flag_c = 1;
+			i++;
+		}
+		if (argv[i] && !ft_strcmp(argv[i], "-o"))
+		{
+			*flag_o = 1;
+			i++;
+		}
+		j++;
 	}
-	return (0);
+	return (i);
 }
