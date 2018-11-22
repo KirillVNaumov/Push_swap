@@ -6,7 +6,7 @@
 #    By: knaumov <knaumov@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/05 15:18:06 by knaumov           #+#    #+#              #
-#    Updated: 2018/11/15 16:19:33 by knaumov          ###   ########.fr        #
+#    Updated: 2018/11/21 17:24:24 by amelikia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ all: $(LIB_OPER) $(EXEC_C) $(EXEC_P)
 
 $(LIB_OPER):
 	@echo "$(GREEN)Making objects files for $(GREEN_EXTRA)$(LIB_OPER)$(RESET)"
-	@gcc -Wall -Wextra -Werror $(SRCS_OPER) $(UTILS) $(INCLUDES) -c
+	@gcc -Wall -Wextra -Werror $(SRCS_OPER) $(UTILS) $(INCLUDES) -c -g
 	@echo "$(GREEN)Compiling $(GREEN_EXTRA)$(LIB_OPER)$(RESET)"
 	@ar rc $(LIB_OPER) *.o
 	@ranlib $(LIB_OPER)
@@ -52,7 +52,7 @@ $(LIB_OPER):
 
 $(EXEC_C):
 	@echo "$(GREEN)Making objects files for $(GREEN_EXTRA)$(LIB_C)$(RESET)"
-	@gcc -Wall -Wextra -Werror $(SRCS_C) $(INCLUDES) -c
+	@gcc -Wall -Wextra -Werror $(SRCS_C) $(INCLUDES) -c -g
 	@echo "$(GREEN)Compiling $(GREEN_EXTRA)$(LIB_C)$(RESET)"
 	@ar rc $(LIB_C) *.o
 	@ranlib $(LIB_C)
@@ -60,13 +60,13 @@ $(EXEC_C):
 	@echo "$(GREEN)Moving objects files for $(GREEN_EXTRA)$(LIB_C)$(GREEN) to $(OBJ)$(RESET)"
 	@mv *.o $(OBJ)
 	@echo "$(GREEN)Compiling executable $(GREEN_EXTRA)$(EXEC_C)$(RESET)"
-	@gcc -Wall -Wextra -Werror $(LIB_C) $(LIB_OPER) $(LIBFT) $(INCLUDES) -o $(EXEC_C)
+	@gcc -Wall -Wextra -Werror $(LIB_C) $(LIB_OPER) $(LIBFT) $(INCLUDES) -o $(EXEC_C) -g
 	@echo "$(BLUE_EXTRA)$(EXEC_C)$(BLUE): Complete$(RESET)"
 
 
 $(EXEC_P):
 	@echo "$(GREEN)Making objects files for $(GREEN_EXTRA)$(LIB_P)$(RESET)"
-	@gcc -Wall -Wextra -Werror $(SRCS_P) $(INCLUDES) -c
+	@gcc -Wall -Wextra -Werror $(SRCS_P) $(INCLUDES) -c -g
 	@echo "$(GREEN)Compiling $(GREEN_EXTRA)$(LIB_P)$(RESET)"
 	@ar rc $(LIB_P) *.o
 	@ranlib $(LIB_P)
@@ -74,7 +74,7 @@ $(EXEC_P):
 	@echo "$(GREEN)Moving objects files for $(GREEN_EXTRA)$(LIB_P)$(GREEN) to $(OBJ)$(RESET)"
 	@mv *.o $(OBJ)
 	@echo "$(GREEN)Compiling executable $(GREEN_EXTRA)$(EXEC_P)$(RESET)"
-	@gcc -Wall -Wextra -Werror $(LIB_P) $(LIB_OPER) $(LIBFT) $(INCLUDES) -o $(EXEC_P)
+	@gcc -Wall -Wextra -Werror $(LIB_P) $(LIB_OPER) $(LIBFT) $(INCLUDES) -o $(EXEC_P) -g
 	@echo "$(BLUE_EXTRA)$(EXEC_P)$(BLUE): Complete$(RESET)"
 
 clean:
@@ -92,27 +92,27 @@ fclean: clean
 	echo "$(RED)Deleting $(RED_EXTRA)$(LIB_OPER)$(RESET)"; \
 	/bin/rm -f $(LIB_OPER); \
 	fi
-	
+
 	@if [ -a "$(LIB_C)" ]; then \
 	echo "$(RED)Deleting $(RED_EXTRA)$(LIB_C)$(RESET)"; \
 	/bin/rm -f $(LIB_C); \
 	fi
-	
+
 	@if [ -a "$(LIB_P)" ]; then \
 	echo "$(RED)Deleting $(RED_EXTRA)$(LIB_P)$(RESET)"; \
 	/bin/rm -f $(LIB_P); \
 	fi
-	
+
 	@if [ -a "$(EXEC_C)" ]; then \
 	echo "$(RED)Deleting executable $(RED_EXTRA)$(EXEC_C)$(RESET)"; \
 	/bin/rm -f $(EXEC_C); \
 	fi
-	
+
 	@if [ -a "$(EXEC_P)" ]; then \
 	echo "$(RED)Deleting executable $(RED_EXTRA)$(EXEC_P)$(RESET)"; \
 	/bin/rm -f $(EXEC_P); \
 	fi
-	
+
 	@make -C libft fclean
 	@echo "$(BLUE_EXTRA)fclean$(BLUE): Complete$(RESET)"
 
