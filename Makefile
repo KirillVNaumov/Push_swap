@@ -117,6 +117,3 @@ fclean: clean
 	@echo "$(BLUE_EXTRA)fclean$(BLUE): Complete$(RESET)"
 
 re: fclean all
-
-leaks: fclean
-	gcc -g ./srcs/*.c ./utils/*.c -I includes $(LIBFT)  main.c -o $(EXEC)
