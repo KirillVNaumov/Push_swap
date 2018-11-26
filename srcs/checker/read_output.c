@@ -94,7 +94,7 @@ int		read_output(t_list **stack_a, int flag_v, int flag_c)
 		flag_v_check(stack_a, &stack_b, flag_v, flag_c);
 		ft_strdel(&input);
 	}
-	check_result(stack_a, stack_b);
+	check_result(stack_a, &stack_b);
 	ft_strdel(&input);
 	return (0);
 }

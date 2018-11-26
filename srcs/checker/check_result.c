@@ -12,14 +12,15 @@
 
 #include "checker.h"
 
-void		check_result(t_list **stack_a, t_list *stack_b)
+void		check_result(t_list **stack_a, t_list **stack_b)
 {
 	t_list	*tmp;
 
 	tmp = *stack_a;
-	if (stack_b)
+	if (*stack_b)
 	{
 		ft_printf("KO\n");
+		ft_list_clean(stack_b);
 		return ;
 	}
 	while (tmp->next)
