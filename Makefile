@@ -40,7 +40,7 @@ all: $(LIB_OPER) $(EXEC_C) $(EXEC_P)
 
 $(LIB_OPER):
 	@echo "$(GREEN)Making objects files for $(GREEN_EXTRA)$(LIB_OPER)$(RESET)"
-	@gcc -Wall -Wextra -Werror $(SRCS_OPER) $(UTILS) $(INCLUDES) -c -g
+	@gcc -Wall -Wextra -Werror $(SRCS_OPER) $(UTILS) $(INCLUDES) -c
 	@echo "$(GREEN)Compiling $(GREEN_EXTRA)$(LIB_OPER)$(RESET)"
 	@ar rc $(LIB_OPER) *.o
 	@ranlib $(LIB_OPER)
@@ -52,7 +52,7 @@ $(LIB_OPER):
 
 $(EXEC_C):
 	@echo "$(GREEN)Making objects files for $(GREEN_EXTRA)$(LIB_C)$(RESET)"
-	@gcc -Wall -Wextra -Werror $(SRCS_C) $(INCLUDES) -c -g
+	@gcc -Wall -Wextra -Werror $(SRCS_C) $(INCLUDES) -c
 	@echo "$(GREEN)Compiling $(GREEN_EXTRA)$(LIB_C)$(RESET)"
 	@ar rc $(LIB_C) *.o
 	@ranlib $(LIB_C)
@@ -60,13 +60,13 @@ $(EXEC_C):
 	@echo "$(GREEN)Moving objects files for $(GREEN_EXTRA)$(LIB_C)$(GREEN) to $(OBJ)$(RESET)"
 	@mv *.o $(OBJ)
 	@echo "$(GREEN)Compiling executable $(GREEN_EXTRA)$(EXEC_C)$(RESET)"
-	@gcc -Wall -Wextra -Werror $(LIB_C) $(LIB_OPER) $(LIBFT) $(INCLUDES) -o $(EXEC_C) -g
+	@gcc -Wall -Wextra -Werror $(LIB_C) $(LIB_OPER) $(LIBFT) $(INCLUDES) -o $(EXEC_C)
 	@echo "$(BLUE_EXTRA)$(EXEC_C)$(BLUE): Complete$(RESET)"
 
 
 $(EXEC_P):
 	@echo "$(GREEN)Making objects files for $(GREEN_EXTRA)$(LIB_P)$(RESET)"
-	@gcc -Wall -Wextra -Werror $(SRCS_P) $(INCLUDES) -c -g
+	@gcc -Wall -Wextra -Werror $(SRCS_P) $(INCLUDES) -c
 	@echo "$(GREEN)Compiling $(GREEN_EXTRA)$(LIB_P)$(RESET)"
 	@ar rc $(LIB_P) *.o
 	@ranlib $(LIB_P)
@@ -74,7 +74,7 @@ $(EXEC_P):
 	@echo "$(GREEN)Moving objects files for $(GREEN_EXTRA)$(LIB_P)$(GREEN) to $(OBJ)$(RESET)"
 	@mv *.o $(OBJ)
 	@echo "$(GREEN)Compiling executable $(GREEN_EXTRA)$(EXEC_P)$(RESET)"
-	@gcc -Wall -Wextra -Werror $(LIB_P) $(LIB_OPER) $(LIBFT) $(INCLUDES) -o $(EXEC_P) -g
+	@gcc -Wall -Wextra -Werror $(LIB_P) $(LIB_OPER) $(LIBFT) $(INCLUDES) -o $(EXEC_P)
 	@echo "$(BLUE_EXTRA)$(EXEC_P)$(BLUE): Complete$(RESET)"
 
 clean:
