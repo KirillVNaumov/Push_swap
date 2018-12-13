@@ -25,7 +25,8 @@ void	error_push_swap(int flag_optimized, t_list **stack)
 		write(2, "Error\n", 6);
 		return ;
 	}
-	if (find_optimal_solution(*stack, flag_optimized) == 0)
+	flag_optimized = 0;
+	// if (find_optimal_solution(*stack, flag_optimized) == 0)
 		find_solution(stack);
 	ft_list_clean(stack);
 }

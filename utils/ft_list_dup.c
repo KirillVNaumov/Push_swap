@@ -23,7 +23,7 @@ t_list		*ft_list_dup(t_list *list)
 		return (NULL);
 	while (tmp)
 	{
-		new = ft_list_add_back(new, tmp->data, tmp->pos);
+		new = ft_list_add_back(new, tmp->data, tmp->pos, tmp->if_chain);
 		tmp = tmp->next;
 	}
 	return (new);

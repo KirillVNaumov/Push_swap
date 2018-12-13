@@ -26,7 +26,7 @@ int		add_to_list(int i, char **argv, t_list **stack)
 			ft_printf("Error\n");
 			return (0);
 		}
-		*stack = ft_list_add_back((*stack), ft_atoi(argv[i++]), 0);
+		*stack = ft_list_add_back((*stack), ft_atoi(argv[i++]), 0, 0);
 	}
 	return (1);
 }

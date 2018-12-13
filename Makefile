@@ -6,14 +6,14 @@
 #    By: knaumov <knaumov@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/05 15:18:06 by knaumov           #+#    #+#              #
-#    Updated: 2018/11/21 17:24:24 by amelikia         ###   ########.fr        #
+#    Updated: 2018/12/12 20:06:18 by knaumov          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 INCLUDES = -I ./includes
 
 SRCS_C = ./srcs/checker/*
-SRCS_P = ./srcs/push_swap/*
+SRCS_P = ./srcs/push_swap/*.c ./srcs/push_swap/recursive_way/*.c
 SRCS_OPER = ./srcs/operations/*.c
 
 UTILS = ./utils/*
@@ -40,19 +40,19 @@ all: $(LIB_OPER) $(EXEC_C) $(EXEC_P)
 
 $(LIB_OPER):
 	@echo "$(GREEN)Making objects files for $(GREEN_EXTRA)$(LIB_OPER)$(RESET)"
-	@gcc -Wall -Wextra -Werror $(SRCS_OPER) $(UTILS) $(INCLUDES) -c
+	@gcc -Wall -Wextra -Werror $(SRCS_OPER) $(UTILS) $(INCLUDES) -c -g
 	@echo "$(GREEN)Compiling $(GREEN_EXTRA)$(LIB_OPER)$(RESET)"
 	@ar rc $(LIB_OPER) *.o
 	@ranlib $(LIB_OPER)
 	@if [ ! -d "./obj" ]; then mkdir -p $(OBJ); fi
 	@echo "$(GREEN)Moving objects files for $(GREEN_EXTRA)$(LIB_OPER)$(GREEN) to $(OBJ)$(RESET)"
 	@mv *.o $(OBJ)
-	@make -C libft
+	#@make -C libft
 	@echo "$(BLUE_EXTRA)$(LIB_OPER)$(BLUE): Complete$(RESET)"
 
 $(EXEC_C):
 	@echo "$(GREEN)Making objects files for $(GREEN_EXTRA)$(LIB_C)$(RESET)"
-	@gcc -Wall -Wextra -Werror $(SRCS_C) $(INCLUDES) -c
+	@gcc -Wall -Wextra -Werror $(SRCS_C) $(INCLUDES) -c -g
 	@echo "$(GREEN)Compiling $(GREEN_EXTRA)$(LIB_C)$(RESET)"
 	@ar rc $(LIB_C) *.o
 	@ranlib $(LIB_C)
@@ -66,7 +66,7 @@ $(EXEC_C):
 
 $(EXEC_P):
 	@echo "$(GREEN)Making objects files for $(GREEN_EXTRA)$(LIB_P)$(RESET)"
-	@gcc -Wall -Wextra -Werror $(SRCS_P) $(INCLUDES) -c
+	@gcc -Wall -Wextra -Werror $(SRCS_P) $(INCLUDES) -c -g
 	@echo "$(GREEN)Compiling $(GREEN_EXTRA)$(LIB_P)$(RESET)"
 	@ar rc $(LIB_P) *.o
 	@ranlib $(LIB_P)
@@ -74,7 +74,7 @@ $(EXEC_P):
 	@echo "$(GREEN)Moving objects files for $(GREEN_EXTRA)$(LIB_P)$(GREEN) to $(OBJ)$(RESET)"
 	@mv *.o $(OBJ)
 	@echo "$(GREEN)Compiling executable $(GREEN_EXTRA)$(EXEC_P)$(RESET)"
-	@gcc -Wall -Wextra -Werror $(LIB_P) $(LIB_OPER) $(LIBFT) $(INCLUDES) -o $(EXEC_P)
+	@gcc -Wall -Wextra -Werror $(LIB_P) $(LIB_OPER) $(LIBFT) $(INCLUDES) -g -o $(EXEC_P)
 	@echo "$(BLUE_EXTRA)$(EXEC_P)$(BLUE): Complete$(RESET)"
 
 clean:
@@ -84,7 +84,7 @@ clean:
 	echo "$(RED)Deleting objects for $(RED_EXTRA)$(LIB_P)$(RESET)"; \
 	/bin/rm -rf $(OBJ); \
 	fi
-	@make -C libft clean
+	#@make -C libft clean
 	@echo "$(BLUE_EXTRA)clean$(BLUE): Complete$(RESET)"
 
 fclean: clean
@@ -113,7 +113,7 @@ fclean: clean
 	/bin/rm -f $(EXEC_P); \
 	fi
 
-	@make -C libft fclean
+	#@make -C libft fclean
 	@echo "$(BLUE_EXTRA)fclean$(BLUE): Complete$(RESET)"
 
 re: fclean all

@@ -19,6 +19,6 @@ void		rotate(t_list **list)
 	if (ft_list_size(*list) < 2)
 		return ;
 	node = *list;
-	*list = ft_list_add_back(*list, node->data, node->pos);
+	*list = ft_list_add_back(*list, node->data, node->pos, node->if_chain);
 	ft_list_remove_front(list);
 }

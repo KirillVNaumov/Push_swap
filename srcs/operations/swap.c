@@ -28,4 +28,7 @@ void		swap(t_list **list)
 	tmp = elem1->pos;
 	elem1->pos = elem2->pos;
 	elem2->pos = tmp;
+	tmp = elem1->if_chain;
+	elem1->if_chain = elem2->if_chain;
+	elem2->if_chain = tmp;
 }

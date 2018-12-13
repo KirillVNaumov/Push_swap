@@ -21,7 +21,7 @@ t_list		*ft_list_ndup(t_list *list, int size)
 	tmp = list;
 	while (tmp && size > 0)
 	{
-		new = ft_list_add_back(new, tmp->data, tmp->pos);
+		new = ft_list_add_back(new, tmp->data, tmp->pos, tmp->if_chain);
 		tmp = tmp->next;
 		--size;
 	}

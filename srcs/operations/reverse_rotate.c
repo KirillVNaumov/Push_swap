@@ -21,6 +21,6 @@ void		reverse_rotate(t_list **list)
 	node = *list;
 	while (node->next)
 		node = node->next;
-	*list = ft_list_add_front(*list, node->data, node->pos);
+	*list = ft_list_add_front(*list, node->data, node->pos, node->if_chain);
 	ft_list_remove_back(list);
 }

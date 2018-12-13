@@ -23,6 +23,7 @@ typedef struct		s_list
 {
 	int				data;
 	int				pos;
+	int				if_chain;
 	struct s_list	*next;
 }					t_list;
 typedef struct		s_comm
@@ -31,8 +32,8 @@ typedef struct		s_comm
 	struct s_comm	*next;
 }					t_comm;
 int					ft_list_size(t_list *root);
-t_list				*ft_list_add_back(t_list *list, int data, int pos);
-t_list				*ft_list_add_front(t_list *list, int data, int pos);
+t_list				*ft_list_add_back(t_list *list, int data, int pos, int if_chain);
+t_list				*ft_list_add_front(t_list *list, int data, int pos, int if_chain);
 void				ft_list_clean(t_list **list);
 t_list				*ft_list_dup(t_list *list);
 t_list				*ft_list_ndup(t_list *list, int size);
