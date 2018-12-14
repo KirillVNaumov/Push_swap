@@ -62,7 +62,6 @@ int        right_pos_in_a(t_list *stack_a, int pos)
 		rotate_until(&tmp, pos_a);
 		while (tmp->pos < pos)
 				rotate(&tmp);
-		// ft_printf("       pos = %d pos in a = %d\n", pos, tmp->pos);
 		pos_a = tmp->pos;
 		ft_list_clean(&tmp);
 		return(pos_a);
@@ -102,12 +101,10 @@ void        find_total(t_minimal *min, t_comm **commands)
 				min->rrr = min->rra;
 				total_rra_rrb = min->rrb;
 		}
-		// ft_printf("---------------\nra/rb = %d, rra/rb = %d, ra/rrb = %d, rra/rrb = %d\n", total_ra_rb, total_rra_rb, total_ra_rrb, total_rra_rrb);
 		min->current_total = return_minimal(\
 		return_minimal(return_minimal(return_minimal(\
 		min->current_total, total_ra_rrb), total_rra_rb), \
 		total_rra_rrb), total_ra_rb);
-		// ft_printf("current total = %d\n\n", min->current_total);
 		if (min->current_total == total_ra_rb)
 				assign_comm_ra_rb(min, commands);
 		else if (min->current_total == total_rra_rb)
@@ -126,12 +123,9 @@ void        deal_with_b(t_list **tmp, t_list *stack_b, t_minimal *min, t_list *s
 		commands = NULL;
 		set_minimal(min);
 		find_minimal(stack_b, min, (*tmp)->pos, 'b');
-		// ft_printf("     %d: min.rb == %d min.rrb == %d\n", (*tmp)->pos, min->rb, min->rrb);
 		pos_a = right_pos_in_a(stack_a, (*tmp)->pos);
 		find_minimal(stack_a, min, pos_a, 'a');
-		// ft_printf("     %d: min.ra == %d min.rra == %d\n", pos_a, min->ra, min->rra);
 		find_total(min, &commands);
-		// ft_printf("     %d before %d - %d\n", (*tmp)->pos, pos_a, min->current_total);
 		if (min->current_total < min->best_total)
 		{
 				min->best_pos = (*tmp)->pos;
@@ -141,36 +135,36 @@ void        deal_with_b(t_list **tmp, t_list *stack_b, t_minimal *min, t_list *s
 		rotate(tmp);
 }
 
-void        apply_commands(t_list **stack_a, t_list **stack_b, t_comm *commands)
+void        apply_commands(t_list **stack_a, t_list **stack_b, t_comm *commands_min, t_comm **commands_real)
 {
-		while (commands)
+		while (commands_min)
 		{
-				if (!ft_strcmp(commands->command, "ra"))
+				if (!ft_strcmp(commands_min->command, "ra"))
 						rotate(stack_a);
-				else if (!ft_strcmp(commands->command, "rb"))
+				else if (!ft_strcmp(commands_min->command, "rb"))
 						rotate(stack_b);
-				else if (!ft_strcmp(commands->command, "rr"))
+				else if (!ft_strcmp(commands_min->command, "rr"))
 				{
 						rotate(stack_a);
 						rotate(stack_b);
 				}
-				else if (!ft_strcmp(commands->command, "rra"))
+				else if (!ft_strcmp(commands_min->command, "rra"))
 						reverse_rotate(stack_a);
-				else if (!ft_strcmp(commands->command, "rrb"))
+				else if (!ft_strcmp(commands_min->command, "rrb"))
 						reverse_rotate(stack_b);
-				else if (!ft_strcmp(commands->command, "rrr"))
+				else if (!ft_strcmp(commands_min->command, "rrr"))
 				{
 						reverse_rotate(stack_a);
 						reverse_rotate(stack_b);
 				}
-				ft_printf("%s\n", commands->command);
-				commands = commands->next;
+				(*commands_real) = ft_comm_add_back(*commands_real, commands_min->command);
+				commands_min = commands_min->next;
 		}
 		push(stack_b, stack_a);
-		ft_printf("pa\n");
+		(*commands_real) = ft_comm_add_back(*commands_real, "pa");
 }
 
-void        find_and_apply_minimal_oper(t_list **stack_a, t_list **stack_b)
+void        find_and_apply_minimal_oper(t_list **stack_a, t_list **stack_b, t_comm **commands)
 {
 		int         begin_b;
 		t_list      *tmp;
@@ -183,24 +177,5 @@ void        find_and_apply_minimal_oper(t_list **stack_a, t_list **stack_b)
 		while (tmp->pos != begin_b && min.best_total > 2)
 				deal_with_b(&tmp, *stack_b, &min, *stack_a);
 		deal_with_b(&tmp, *stack_b, &min, *stack_a);
-
-		apply_commands(stack_a, stack_b, min.commands);
-
-		// t_list  *tmp_a;
-		// t_list  *tmp_b;
-		// tmp_a = ft_list_dup(*stack_a);
-		// tmp_b = ft_list_dup(*stack_b);
-	// ft_printf("\nStack a:\n");
-	// while (tmp_a)
-	// {
-	// 	ft_printf("%d -- %d\n", tmp_a->data, tmp_a->if_chain);
-	// 	tmp_a = tmp_a->next;
-	// }
-	// ft_printf("\nStack b:\n");
-	// while (tmp_b)
-	// {
-	// 	ft_printf("%d -- %d\n", tmp_b->data, tmp_b->if_chain);
-	// 	tmp_b = tmp_b->next;
-	// }
-		// ft_printf("\n\n");
+		apply_commands(stack_a, stack_b, min.commands, commands);
 }

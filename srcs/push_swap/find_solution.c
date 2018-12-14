@@ -3,22 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   find_solution.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: knaumov <knaumov@student.42.fr>            +#+  +:+       +#+        */
+/*   By: knaumov <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/21 11:47:56 by knaumov           #+#    #+#             */
-/*   Updated: 2018/12/14 13:33:00 by amelikia         ###   ########.fr       */
+/*   Updated: 2018/11/21 11:47:58 by knaumov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-// t_comm	*optimize(t_comm *commands)
-// {
-// 	while (check_for_right_commnds(commands) == 0)
-// 		commands = optimize_answer(commands);
-// 	commands = check_for_two_stack_rotations(commands);
-// 	return (commands);
-// }
 
 int		find_the_last_number(t_list *stack_a)
 {
@@ -96,26 +88,29 @@ int		find_number_of_zero_chain(t_list *stack)
 	return (zeros);
 }
 
-void	push_b_but_chain(t_list **stack_a, t_list **stack_b)
+void	push_b_but_chain(t_list **stack_a, t_list **stack_b, t_comm **commands)
 {
 	int	ra;
 
 	ra = find_number_of_zero_chain(*stack_a);
 	while ((*stack_a)->if_chain == 0 && ra > 0)
-	{
+	{		
 		push(stack_a, stack_b);
-		ft_printf("pb\n");
+		*commands = ft_comm_add_back(*commands, "pb");
+		// ft_printf("pb\n");
 		--ra;
 	}
 	while ((*stack_a)->if_chain == 1 && ra > 0)
 	{
 		rotate(stack_a);
-		ft_printf("ra\n");
+		*commands = ft_comm_add_back(*commands, "ra");
+		// ft_printf("ra\n");
 	}
 	while ((*stack_a)->if_chain == 0 && ra > 0)
 	{
 		push(stack_a, stack_b);
-		ft_printf("pb\n");
+		*commands = ft_comm_add_back(*commands, "pb");
+		// ft_printf("pb\n");
 		--ra;
 	}
 }
@@ -149,53 +144,34 @@ int		find_solution(t_list **stack_a)
 {
 	t_list	*stack_b;
 	t_list	*temp;
+	t_comm  *commands;
 	int		beginning_chain;
 
 	stack_b = NULL;
+	commands = NULL;
 	*stack_a = list_assign_pos(*stack_a);
 	temp =  ft_list_dup(*stack_a);
 	beginning_chain = find_the_biggest_chain(temp);
 	define_biggest_chain(stack_a, beginning_chain);
-	push_b_but_chain(stack_a, &stack_b);
-
-	// ft_printf("Stack a:\n");
-	// while (*stack_a)
-	// {
-	// 	ft_printf("%d -- %d\n", (*stack_a)->data, (*stack_a)->if_chain);
-	// 	(*stack_a) = (*stack_a)->next;
-	// }
-	// ft_printf("\nStack b:\n");
-	// while (stack_b)
-	// {
-	// 	ft_printf("%d -- %d\n", stack_b->data, stack_b->if_chain);
-	// 	stack_b = stack_b->next;
-	// }
-
+	push_b_but_chain(stack_a, &stack_b, &commands);
 	while (stack_b != NULL)
-		find_and_apply_minimal_oper(stack_a, &stack_b);
+		find_and_apply_minimal_oper(stack_a, &stack_b, &commands);
 	if (count_rotate(*stack_a, 1) < count_reverse_rotate(*stack_a, 1))
 		while ((*stack_a)->pos != 1)
 		{
-			ft_printf("ra\n");
+			commands = ft_comm_add_back(commands, "ra");
 			rotate(stack_a);
 		}
 	else
 		while ((*stack_a)->pos != 1)
 		{
-			ft_printf("rra\n");
+			commands = ft_comm_add_back(commands, "rra");
 			reverse_rotate(stack_a);
 		}
-	// ft_printf("Stack a:\n");
-	// while (*stack_a)
-	// {
-	// 	ft_printf("%d -- %d\n", (*stack_a)->data, (*stack_a)->if_chain);
-	// 	(*stack_a) = (*stack_a)->next;
-	// }
-	// ft_printf("\nStack b:\n");
-	// while (stack_b)
-	// {
-	// 	ft_printf("%d -- %d\n", stack_b->data, stack_b->if_chain);
-	// 	stack_b = stack_b->next;
-	// }
+	while (commands)
+	{
+		ft_printf("%s\n", commands->command);
+		commands = commands->next;
+	}
 	return (0);
 }
