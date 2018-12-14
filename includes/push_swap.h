@@ -6,7 +6,7 @@
 /*   By: knaumov <knaumov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/05 15:28:26 by knaumov           #+#    #+#             */
-/*   Updated: 2018/11/20 20:51:30 by knaumov          ###   ########.fr       */
+/*   Updated: 2018/12/14 13:15:28 by amelikia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ void        assign_comm_ra_rb(t_minimal *min, t_comm **commands);
 void        assign_comm_rra_rb(t_minimal *min, t_comm **commands);
 void        assign_comm_ra_rrb(t_minimal *min, t_comm **commands);
 void        assign_comm_rra_rrb(t_minimal *min, t_comm **commands);
+
+void				count_rotate_rev_rotate(t_list *stack, int pos, int *r, int *rr);
 
 // PREVIOUS TRY
 

@@ -43,3 +43,22 @@ void			rotate_until(t_list **stack, int pos)
 	while ((*stack)->pos != pos)
 		rotate(stack);
 }
+
+void	count_rotate_rev_rotate(t_list *stack, int pos, int *r, int *rr)
+{
+	int i;
+	int stack_size;
+
+	stack_size = ft_list_size(stack);
+	i = 0;
+	while (stack->pos != pos && stack)
+	{
+		i++;
+		stack = stack->next;
+	}
+	*r = i;
+	if (i != 0)
+		*rr = (stack_size) - i;
+	else
+		*rr = 0;
+}
