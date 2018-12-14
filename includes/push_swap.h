@@ -33,6 +33,15 @@ int					reverse_rotate_rec(t_list *stack_a, t_list *stack_b,
 	int set_depth, t_comm **command_list);
 int					check_last_comm(t_comm *list, char *command);
 int					check_answer(t_list *stack_a, t_list *stack_b);
+int			count_reverse_rotate(t_list *stack, int pos);
+int			count_rotate(t_list *stack, int pos);
+void		reverse_rotate_until(t_list **stack, int pos);
+void		rotate_until(t_list **stack, int pos);
+void        find_and_apply_minimal_oper(t_list **stack_a, t_list **stack_b);
+void        assign_comm_ra_rb(t_minimal *min, t_comm **commands);
+void        assign_comm_rra_rb(t_minimal *min, t_comm **commands);
+void        assign_comm_ra_rrb(t_minimal *min, t_comm **commands);
+void        assign_comm_rra_rrb(t_minimal *min, t_comm **commands);
 
 // PREVIOUS TRY
 

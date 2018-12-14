@@ -53,6 +53,7 @@ void	print_status(t_list *stack_a, t_list *stack_b, int color)
 	int		max_length_b;
 	int		printed_rows;
 
+	ft_printf("%s", CLEAN);
 	ft_printf("-------------------------\n");
 	if (ft_list_size(stack_a) > ft_list_size(stack_b))
 		heigth = ft_list_size(stack_a);

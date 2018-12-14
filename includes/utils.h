@@ -18,6 +18,7 @@
 # define RED "\x1B[31m"
 # define BLUE "\x1B[34m"
 # define WHITE "\x1B[39m"
+# define CLEAN "\e[1;1H\e[2J"
 
 typedef struct		s_list
 {
@@ -26,11 +27,27 @@ typedef struct		s_list
 	int				if_chain;
 	struct s_list	*next;
 }					t_list;
+
 typedef struct		s_comm
 {
 	char			*command;
 	struct s_comm	*next;
 }					t_comm;
+
+typedef struct		s_minimal
+{
+	int				ra;
+	int				rb;
+	int				rra;
+	int				rrb;
+	int				rr;
+	int				rrr;
+	int				best_pos;
+	int 			best_total;
+	int				current_total;
+	t_comm			*commands;
+}					t_minimal;
+
 int					ft_list_size(t_list *root);
 t_list				*ft_list_add_back(t_list *list, int data, int pos, int if_chain);
 t_list				*ft_list_add_front(t_list *list, int data, int pos, int if_chain);

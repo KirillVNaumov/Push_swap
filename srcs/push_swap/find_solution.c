@@ -20,50 +20,6 @@
 // 	return (commands);
 // }
 
-int			count_reverse_rotate(t_list *stack, int pos)
-{
-	int		count;
-	t_list	*temp;
-
-	temp = ft_list_dup(stack);
-	count = 0;
-	while (temp->pos != pos)
-	{
-		reverse_rotate(&temp);
-		++count;
-	}
-	ft_list_clean(&temp);
-	return (count);
-}
-
-int			count_rotate(t_list *stack, int pos)
-{
-	int		count;
-	t_list	*temp;
-
-	temp = ft_list_dup(stack);
-	count = 0;
-	while (temp->pos != pos)
-	{
-		rotate(&temp);
-		++count;
-	}
-	ft_list_clean(&temp);
-	return (count);
-}
-
-void			reverse_rotate_until(t_list **stack, int pos)
-{
-	while ((*stack)->pos != pos)
-		reverse_rotate(stack);
-}
-
-void			rotate_until(t_list **stack, int pos)
-{
-	while ((*stack)->pos != pos)
-		rotate(stack);
-}
-
 int		find_the_last_number(t_list *stack_a)
 {
 	t_list	*tmp;
@@ -126,18 +82,42 @@ int			find_the_biggest_chain(t_list *stack_a)
 	return (begin_pos);
 }
 
-void	push_b_but_chain(t_list **stack_a, t_list **stack_b, t_comm *commands)
+int		find_number_of_zero_chain(t_list *stack)
 {
-	t_comm *temp;
+	int zeros;
 
-	temp = commands;
+	zeros = 0;
+	while (stack)
+	{
+		if (stack->if_chain == 0)
+			zeros++;
+		stack = stack->next;
+	}
+	return (zeros);
+}
 
-	while ((*stack_a)->if_chain != 1)
+void	push_b_but_chain(t_list **stack_a, t_list **stack_b)
+{
+	int	ra;
+
+	ra = find_number_of_zero_chain(*stack_a);
+	while ((*stack_a)->if_chain == 0 && ra > 0)
+	{
 		push(stack_a, stack_b);
-	while ((*stack_a)->if_chain != 0)
+		ft_printf("pb\n");
+		--ra;
+	}
+	while ((*stack_a)->if_chain == 1 && ra > 0)
+	{
 		rotate(stack_a);
-	while ((*stack_a)->if_chain != 1)
+		ft_printf("ra\n");
+	}
+	while ((*stack_a)->if_chain == 0 && ra > 0)
+	{
 		push(stack_a, stack_b);
+		ft_printf("pb\n");
+		--ra;
+	}
 }
 
 void	define_biggest_chain(t_list **stack_a, int beginning_chain)
@@ -169,32 +149,53 @@ int		find_solution(t_list **stack_a)
 {
 	t_list	*stack_b;
 	t_list	*temp;
-	t_comm	*commands;
 	int		beginning_chain;
 
-	commands = NULL;
 	stack_b = NULL;
 	*stack_a = list_assign_pos(*stack_a);
-
 	temp =  ft_list_dup(*stack_a);
 	beginning_chain = find_the_biggest_chain(temp);
-
-	ft_printf("biggest chain == %d\n", beginning_chain);
-
 	define_biggest_chain(stack_a, beginning_chain);
-	push_b_but_chain(stack_a, &stack_b, commands);
+	push_b_but_chain(stack_a, &stack_b);
 
-	ft_printf("Stack a:\n");
-	while (*stack_a)
-	{
-		ft_printf("%d -- %d\n", (*stack_a)->data, (*stack_a)->if_chain);
-		(*stack_a) = (*stack_a)->next;
-	}
-	ft_printf("Stack b:\n");
-	while (stack_b)
-	{
-		ft_printf("%d -- %d\n", stack_b->data, stack_b->if_chain);
-		stack_b = stack_b->next;
-	}
+	// ft_printf("Stack a:\n");
+	// while (*stack_a)
+	// {
+	// 	ft_printf("%d -- %d\n", (*stack_a)->data, (*stack_a)->if_chain);
+	// 	(*stack_a) = (*stack_a)->next;
+	// }
+	// ft_printf("\nStack b:\n");
+	// while (stack_b)
+	// {
+	// 	ft_printf("%d -- %d\n", stack_b->data, stack_b->if_chain);
+	// 	stack_b = stack_b->next;
+	// }
+
+	while (stack_b != NULL)
+		find_and_apply_minimal_oper(stack_a, &stack_b);
+	if (count_rotate(*stack_a, 1) < count_reverse_rotate(*stack_a, 1))
+		while ((*stack_a)->pos != 1)
+		{
+			ft_printf("ra\n");
+			rotate(stack_a);
+		}
+	else
+		while ((*stack_a)->pos != 1)
+		{
+			ft_printf("rra\n");
+			reverse_rotate(stack_a);
+		}
+	// ft_printf("Stack a:\n");
+	// while (*stack_a)
+	// {
+	// 	ft_printf("%d -- %d\n", (*stack_a)->data, (*stack_a)->if_chain);
+	// 	(*stack_a) = (*stack_a)->next;
+	// }
+	// ft_printf("\nStack b:\n");
+	// while (stack_b)
+	// {
+	// 	ft_printf("%d -- %d\n", stack_b->data, stack_b->if_chain);
+	// 	stack_b = stack_b->next;
+	// }
 	return (0);
 }
