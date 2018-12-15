@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_push_swap.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: knaumov <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: knaumov <knaumov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/21 11:47:34 by knaumov           #+#    #+#             */
-/*   Updated: 2018/11/21 11:47:35 by knaumov          ###   ########.fr       */
+/*   Updated: 2018/12/14 16:06:03 by amelikia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ void	error_push_swap(int flag_optimized, t_list **stack)
 		write(2, "Error\n", 6);
 		return ;
 	}
-	flag_optimized = 0;
-	// if (find_optimal_solution(*stack, flag_optimized) == 0)
+	if (find_optimal_solution(*stack, flag_optimized) == 0)
 		find_solution(stack);
 	ft_list_clean(stack);
 }

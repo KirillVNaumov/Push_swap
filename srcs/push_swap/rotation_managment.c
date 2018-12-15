@@ -1,6 +1,6 @@
-# include "push_swap.h"
+#include "push_swap.h"
 
-int			count_reverse_rotate(t_list *stack, int pos)
+int		count_reverse_rotate(t_list *stack, int pos)
 {
 	int		count;
 	t_list	*temp;
@@ -16,7 +16,7 @@ int			count_reverse_rotate(t_list *stack, int pos)
 	return (count);
 }
 
-int			count_rotate(t_list *stack, int pos)
+int		count_rotate(t_list *stack, int pos)
 {
 	int		count;
 	t_list	*temp;
@@ -32,13 +32,13 @@ int			count_rotate(t_list *stack, int pos)
 	return (count);
 }
 
-void			reverse_rotate_until(t_list **stack, int pos)
+void	reverse_rotate_until(t_list **stack, int pos)
 {
 	while ((*stack)->pos != pos)
 		reverse_rotate(stack);
 }
 
-void			rotate_until(t_list **stack, int pos)
+void	rotate_until(t_list **stack, int pos)
 {
 	while ((*stack)->pos != pos)
 		rotate(stack);
