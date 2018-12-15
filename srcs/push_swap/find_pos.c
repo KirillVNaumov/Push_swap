@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_answer.c                                     :+:      :+:    :+:   */
+/*   find_pos.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: knaumov <knaumov@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amelikia <amelikia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/15 16:03:20 by knaumov           #+#    #+#             */
-/*   Updated: 2018/12/14 17:53:10 by amelikia         ###   ########.fr       */
+/*   Created: 2018/12/14 17:51:29 by amelikia          #+#    #+#             */
+/*   Updated: 2018/12/14 17:53:19 by amelikia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		check_answer(t_list *stack_a, t_list *stack_b)
+int		find_pos(t_list *stack_a, int min_max)
 {
-	t_list		*tmp;
+	t_list	*tmp;
+	int		min;
+	int		max;
 
+	max = 0;
+	min = 2147483647;
 	tmp = stack_a;
-	if (stack_b)
-		return (-1);
-	while (tmp->next)
+	while (tmp)
 	{
-		if (tmp->data > tmp->next->data)
-			return (-1);
+		if (max < tmp->pos && min_max == 1)
+			max = tmp->pos;
+		if (min > tmp->pos && min_max == -1)
+			min = tmp->pos;
 		tmp = tmp->next;
 	}
-	return (1);
+	if (min_max == -1)
+		return (min);
+	return (max);
 }

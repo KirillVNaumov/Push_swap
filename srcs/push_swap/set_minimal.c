@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_answer.c                                     :+:      :+:    :+:   */
+/*   set_minimal.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: knaumov <knaumov@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amelikia <amelikia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/15 16:03:20 by knaumov           #+#    #+#             */
-/*   Updated: 2018/12/14 17:53:10 by amelikia         ###   ########.fr       */
+/*   Created: 2018/12/14 17:50:35 by amelikia          #+#    #+#             */
+/*   Updated: 2018/12/14 17:53:40 by amelikia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		check_answer(t_list *stack_a, t_list *stack_b)
+void	set_minimal(t_minimal *min)
 {
-	t_list		*tmp;
-
-	tmp = stack_a;
-	if (stack_b)
-		return (-1);
-	while (tmp->next)
-	{
-		if (tmp->data > tmp->next->data)
-			return (-1);
-		tmp = tmp->next;
-	}
-	return (1);
+	min->ra = 0;
+	min->rb = 0;
+	min->rra = 0;
+	min->rrb = 0;
+	min->rr = 0;
+	min->rrr = 0;
+	min->current_total = 2147483647;
 }

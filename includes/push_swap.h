@@ -6,7 +6,7 @@
 /*   By: knaumov <knaumov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/05 15:28:26 by knaumov           #+#    #+#             */
-/*   Updated: 2018/12/14 16:19:30 by amelikia         ###   ########.fr       */
+/*   Updated: 2018/12/14 17:52:26 by amelikia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,17 @@ void				define_biggest_chain(t_list **stack_a, int beginning_chain);
 void				push_b_but_chain(t_list **stack_a,\
 	t_list **stack_b, t_comm **commands);
 int					find_number_of_zero_chain(t_list *stack);
+void				apply_commands(t_list **stack_a, t_list **stack_b,\
+	t_comm *commands_min, t_comm **commandsr);
+void				deal_with_b(t_list **tmp, t_list *stack_b,\
+	t_minimal *min, t_list *stack_a);
+void				find_total(t_minimal *min, t_comm **commands);
+void				set_minimal(t_minimal *min);
+int					right_pos_in_a(t_list *stack_a, int pos);
+int					return_minimal(int n1, int n2);
+void				find_minimal(t_list *stack,\
+	t_minimal *min, int pos, int id);
+int					find_last_pos(t_list *stack);
+int					find_pos(t_list *stack_a, int min_max);
 
 #endif

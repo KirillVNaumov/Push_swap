@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   find_the_last_number.c                             :+:      :+:    :+:   */
+/*   right_pos_in_a.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amelikia <amelikia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/14 16:16:33 by amelikia          #+#    #+#             */
-/*   Updated: 2018/12/14 17:53:30 by amelikia         ###   ########.fr       */
+/*   Created: 2018/12/14 17:52:00 by amelikia          #+#    #+#             */
+/*   Updated: 2018/12/14 17:53:36 by amelikia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		find_the_last_number(t_list *stack_a)
+int		right_pos_in_a(t_list *stack_a, int pos)
 {
 	t_list	*tmp;
-	int		i;
+	int		pos_a;
 
-	i = 0;
-	while (stack_a)
-	{
-		tmp = stack_a;
-		while (tmp)
-		{
-			if (i < tmp->pos)
-				i = tmp->pos;
-			tmp = tmp->next;
-		}
-		stack_a = stack_a->next;
-	}
-	return (i);
+	pos_a = find_pos(stack_a, -1);
+	if (pos < pos_a || pos > find_pos(stack_a, 1))
+		return (pos_a);
+	tmp = ft_list_dup(stack_a);
+	rotate_until(&tmp, pos_a);
+	while (tmp->pos < pos)
+		rotate(&tmp);
+	pos_a = tmp->pos;
+	ft_list_clean(&tmp);
+	return (pos_a);
 }

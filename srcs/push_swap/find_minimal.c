@@ -1,29 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_answer.c                                     :+:      :+:    :+:   */
+/*   find_minimal.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: knaumov <knaumov@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amelikia <amelikia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/15 16:03:20 by knaumov           #+#    #+#             */
-/*   Updated: 2018/12/14 17:53:10 by amelikia         ###   ########.fr       */
+/*   Created: 2018/12/14 17:51:14 by amelikia          #+#    #+#             */
+/*   Updated: 2018/12/14 17:53:18 by amelikia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		check_answer(t_list *stack_a, t_list *stack_b)
+void	find_minimal(t_list *stack, t_minimal *min, int pos, int id)
 {
-	t_list		*tmp;
-
-	tmp = stack_a;
-	if (stack_b)
-		return (-1);
-	while (tmp->next)
-	{
-		if (tmp->data > tmp->next->data)
-			return (-1);
-		tmp = tmp->next;
-	}
-	return (1);
+	if (id == 'a')
+		count_rotate_rev_rotate(stack, pos, &min->ra, &min->rra);
+	else
+		count_rotate_rev_rotate(stack, pos, &min->rb, &min->rrb);
 }
