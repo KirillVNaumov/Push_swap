@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_list_remove_front.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: knaumov <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: knaumov <knaumov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/05 22:20:34 by knaumov           #+#    #+#             */
-/*   Updated: 2018/11/09 11:41:04 by knaumov          ###   ########.fr       */
+/*   Updated: 2018/12/14 16:35:18 by amelikia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,10 @@ void			ft_list_remove_front(t_list **list)
 	}
 	tmp = *list;
 	node = tmp->next;
-	tmp->next = NULL;
-	free(tmp);
+	if (tmp)
+	{
+		tmp->next = NULL;
+		free(tmp);
+	}
 	*list = node;
 }

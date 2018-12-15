@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_clean.c                                    :+:      :+:    :+:   */
+/*   find_number_of_zero_chain.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: knaumov <knaumov@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amelikia <amelikia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/05 20:45:03 by knaumov           #+#    #+#             */
-/*   Updated: 2018/12/14 16:32:57 by amelikia         ###   ########.fr       */
+/*   Created: 2018/12/14 16:19:14 by amelikia          #+#    #+#             */
+/*   Updated: 2018/12/14 16:19:15 by amelikia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
+#include "push_swap.h"
 
-void	ft_list_clean(t_list **list)
+int		find_number_of_zero_chain(t_list *stack)
 {
-	t_list *node;
+	int zeros;
 
-	if (*list == NULL || list == NULL)
-		return ;
-	node = *list;
-	if (node && node->next)
-		ft_list_clean(&node->next);
-	ft_memdel((void**)list);
+	zeros = 0;
+	while (stack)
+	{
+		if (stack->if_chain == 0)
+			zeros++;
+		stack = stack->next;
+	}
+	return (zeros);
 }
