@@ -6,14 +6,13 @@
 /*   By: knaumov <knaumov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/21 11:49:40 by knaumov           #+#    #+#             */
-/*   Updated: 2018/12/14 17:53:37 by amelikia         ###   ########.fr       */
+/*   Updated: 2018/12/14 18:34:06 by amelikia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rotate_back(t_list **stack_a,
-	t_comm **commands, int num)
+void	rotate_back(t_list **stack_a, int num)
 {
 	int list_a_size;
 	int	where_is_one;
@@ -25,7 +24,7 @@ void	rotate_back(t_list **stack_a,
 		while (num > 0)
 		{
 			rotate(stack_a);
-			*commands = ft_comm_add_back((*commands), "ra");
+			ft_printf("ra\n");
 			num--;
 		}
 	}
@@ -34,7 +33,7 @@ void	rotate_back(t_list **stack_a,
 		while (num < list_a_size)
 		{
 			reverse_rotate(stack_a);
-			*commands = ft_comm_add_back((*commands), "rra");
+			ft_printf("rra\n");
 			num++;
 		}
 	}

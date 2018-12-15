@@ -6,7 +6,7 @@
 /*   By: knaumov <knaumov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/05 15:28:26 by knaumov           #+#    #+#             */
-/*   Updated: 2018/12/14 17:52:26 by amelikia         ###   ########.fr       */
+/*   Updated: 2018/12/14 18:40:38 by amelikia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int					count_rotate(t_list *stack, int pos);
 void				reverse_rotate_until(t_list **stack, int pos);
 void				rotate_until(t_list **stack, int pos);
 void				find_and_apply_minimal_oper(t_list **stack_a,\
-	t_list **stack_b, t_comm **commands);
+	t_list **stack_b);
 void				assign_comm_ra_rb(t_minimal *min, t_comm **commands);
 void				assign_comm_rra_rb(t_minimal *min, t_comm **commands);
 void				assign_comm_ra_rrb(t_minimal *min, t_comm **commands);
@@ -47,10 +47,10 @@ int					find_the_biggest_chain(t_list *stack_a);
 int					find_the_last_number(t_list *stack_a);
 void				define_biggest_chain(t_list **stack_a, int beginning_chain);
 void				push_b_but_chain(t_list **stack_a,\
-	t_list **stack_b, t_comm **commands);
+	t_list **stack_b);
 int					find_number_of_zero_chain(t_list *stack);
 void				apply_commands(t_list **stack_a, t_list **stack_b,\
-	t_comm *commands_min, t_comm **commandsr);
+	t_comm *commands_min);
 void				deal_with_b(t_list **tmp, t_list *stack_b,\
 	t_minimal *min, t_list *stack_a);
 void				find_total(t_minimal *min, t_comm **commands);

@@ -6,7 +6,7 @@
 /*   By: amelikia <amelikia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 17:50:20 by amelikia          #+#    #+#             */
-/*   Updated: 2018/12/14 18:26:32 by amelikia         ###   ########.fr       */
+/*   Updated: 2018/12/14 18:29:32 by amelikia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		return_minimal(int n1, int n2)
 }
 
 void	find_and_apply_minimal_oper(t_list **stack_a,\
-	t_list **stack_b, t_comm **commands)
+	t_list **stack_b)
 {
 	int			begin_b;
 	t_list		*tmp;
@@ -32,6 +32,6 @@ void	find_and_apply_minimal_oper(t_list **stack_a,\
 	while (tmp->pos != begin_b && min.best_total > 2)
 		deal_with_b(&tmp, *stack_b, &min, *stack_a);
 	deal_with_b(&tmp, *stack_b, &min, *stack_a);
-	apply_commands(stack_a, stack_b, min.commands, commands);
+	apply_commands(stack_a, stack_b, min.commands);
 	ft_list_clean(&tmp);
 }

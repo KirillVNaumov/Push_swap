@@ -6,7 +6,7 @@
 /*   By: amelikia <amelikia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 17:33:00 by amelikia          #+#    #+#             */
-/*   Updated: 2018/12/14 18:26:20 by amelikia         ###   ########.fr       */
+/*   Updated: 2018/12/14 18:55:34 by amelikia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,7 @@ void	deal_with_b(t_list **tmp, t_list *stack_b,\
 		ft_comm_clean(&min->commands);
 		min->commands = commands;
 	}
+	else
+		ft_comm_clean(&commands);
 	rotate(tmp);
 }
