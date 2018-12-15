@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_comm_clean.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: knaumov <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: knaumov <knaumov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/21 11:50:44 by knaumov           #+#    #+#             */
-/*   Updated: 2018/11/21 11:50:45 by knaumov          ###   ########.fr       */
+/*   Updated: 2018/12/14 18:17:43 by amelikia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_comm_clean(t_comm **comm)
 {
 	t_comm *node;
 
-	if (*comm == NULL)
+	if (*comm == NULL || comm == NULL)
 		return ;
 	node = *comm;
 	if (node->next)

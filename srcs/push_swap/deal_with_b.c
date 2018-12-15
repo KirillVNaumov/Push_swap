@@ -6,7 +6,7 @@
 /*   By: amelikia <amelikia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 17:33:00 by amelikia          #+#    #+#             */
-/*   Updated: 2018/12/14 17:53:11 by amelikia         ###   ########.fr       */
+/*   Updated: 2018/12/14 18:26:20 by amelikia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	deal_with_b(t_list **tmp, t_list *stack_b,\
 	{
 		min->best_pos = (*tmp)->pos;
 		min->best_total = min->current_total;
+		ft_comm_clean(&min->commands);
 		min->commands = commands;
 	}
 	rotate(tmp);
